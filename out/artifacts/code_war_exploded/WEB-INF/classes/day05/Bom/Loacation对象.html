@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location对象</title>
+
+
+</head>
+<body>
+
+<input name="reloadB" type="button" value="刷新">
+<script rel="script">
+
+    var relB = document.getElementById("reloadB");
+    //reload方法：定义了一个按钮，点击按钮，刷新当前页面
+    relB.onclick = function ReloadBt() {
+        //刷新页面
+        location.reload();
+    }
+    //获取href
+    var href = location.href;
+    alert(href);
+</script>
+
+</body>
+</html>

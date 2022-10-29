@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style type="text/css">
+
+        div {
+            position: absolute;
+
+            left: 38%;
+            top: 10%;
+        }
+
+        #table_b {
+            position: absolute;
+
+            border: 1px solid black;
+            width: 500px;
+
+            left: 35%;
+            top: 15%;
+
+            text-align: center;
+        }
+
+        table tr th {
+            border: 1px solid black;
+        }
+
+        table tr td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <!--    <input type="number" name="id" value="编号">-->    <!--后续设置为了自动添加删除编号内容，则去除掉获取id编号的内容框-->
+    <input type="text" name="name" value="姓名">
+    <input type="text" name="gender" value="性别">
+    <input type="button" name="commit" value="添加">
+</div>
+
+<table id="table_b">
+    <thead>
+    <tr>
+        <th colspan="4">学生信息表</th>
+    </tr>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>任我行</td>
+        <td>男</td>
+        <td><a href="javascript:void(0)" onclick="del_table(this)">删除</a></td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td>向问天</td>
+        <td>男</td>
+        <td><a href="javascript:void(0)" onclick="del_table(this)">删除</a></td>
+    </tr>
+
+    <tr>
+        <td>3</td>
+        <td>特仑苏</td>
+        <td>女</td>
+        <td><a href="javascript:void(0)" onclick="del_table(this)">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<script rel="script">
+    var id = 3;
+
+    //添加的操作
+    //给添加按钮绑定单击事件
+    document.getElementsByName("commit")[0].onclick = function () {
+        //获取文本框的内容
+        //var id = document.getElementsByName("id")[0].value;   //自动设置id 则取消获取文本框的id内容
+        var name = document.getElementsByName("name")[0].value;
+        var gender = document.getElementsByName("gender")[0].value;
+
+        //创建td，设置td的文本为文本框的内容
+        var td_id = document.createElement("td");
+        td_id.innerHTML = ++id;
+        var td_name = document.createElement("td");
+        td_name.innerHTML = name;
+        var td_gender = document.createElement("td");
+        td_gender.innerHTML = gender;
+
+        //创建操作中删除的td  //创建td框中的删除超链接a
+        var del_td = document.createElement("td");
+        var del_td_a = document.createElement("a");
+
+        //填充a的内容
+        del_td_a.setAttribute("href", "javascript:void(0)");
+        del_td_a.setAttribute("onclick", "del_table(this)");
+        var text_a = document.createTextNode("删除");
+        del_td_a.appendChild(text_a);
+
+        // //将a放入td中
+        del_td.appendChild(del_td_a);
+        // //创建tr
+        var table_tr = document.createElement("tr");
+
+        //将td添加到tr中
+        table_tr.appendChild(td_id);
+        table_tr.appendChild(td_name);
+        table_tr.appendChild(td_gender);
+        table_tr.appendChild(del_td);
+
+        //获取table，将tr添加到table中
+        var table_b = document.getElementById("table_b");
+        table_b.appendChild(table_tr);
+    }
+
+
+    //删除的操作
+    //添加点击del事件
+    function del_table(obj) {
+        //获取table对象 获取tr对象
+        var table_tr = obj.parentNode.parentNode;
+        var table_b = table_tr.parentNode;
+
+        //删除table中对应的tr
+        table_b.removeChild(table_tr);
+    }
+
+</script>
+</body>
+</html>

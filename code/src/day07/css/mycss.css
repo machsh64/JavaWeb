@@ -1,0 +1,32 @@
+div {
+    width: 230px;
+}
+
+p {
+    font-family: "华文中宋", "幼圆", "宋体", serif;
+    font-size: 12pt;
+    color: yellow;
+    background-color: blue;
+}
+
+a{
+    text-decoration: none;
+}
+
+.div_a {
+    font-family: "宋体", serif;
+    font-size: 12pt;
+    color: black;
+}
+
+.div_a_mouseOn {
+    font-family: "黑体", serif;
+    font-size: 16pt;
+    color: red;
+}
+
+.div_a_after {
+    font-family: "黑体", serif;
+    font-size: 12pt;
+    color: green;
+}

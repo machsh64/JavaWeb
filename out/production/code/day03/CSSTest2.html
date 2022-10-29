@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #div1 {
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+
+            /*border 边框样式*/
+            border-width: 2px; /*边框粗细*/
+            border-style: solid; /*边框样式：solid（实线），dotted（点状线）...*/
+            border-color: blue; /*边框颜色*/
+
+            /*border: 4px blue dotted;*/
+
+            /*border-top: 4px blue dotted;   !*只有顶端有效果的*!*/
+        }
+
+        #div2 {
+            width: 150px;
+            height: 150px;
+            background-color: #e0a4a4;
+
+            margin-top: 100px;
+            margin-left: 100px;
+
+            /*margin: 100px 50px 100px 150px;  !*上 右 下 左  如果是一个值：则四个方向统一；两个值：上下 左右；三个值：上 左右 下*!*/
+
+            /* padding :填充*/
+            padding-top: 50px;
+            padding-left: 50px;
+        }
+
+        #div3 {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+
+            /*margin-top: 12px;*/
+            /*margin-left: 12px;*/
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3">&nbsp</div>
+    </div>
+</div>
+</body>
+</html>

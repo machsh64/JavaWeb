@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取历史记录</title>
+</head>
+<body>
+
+<input id="forward" type="button" value="前进">
+<a href="轮播图案例.html">轮播图页面</a>
+<input id="back" type="button" value="后退">
+
+<input id="in_button" type="button" value="获取历史记录">
+
+<script rel="script">
+    var in_button = document.getElementById("in_button");
+
+    in_button.onclick = function () {
+        var length = history.length;
+        alert(length);
+    }
+
+    document.getElementById("forward").onclick = function () {
+        history.forward();
+    }
+
+    document.getElementById("back").onclick = function () {
+        history.back();
+    }
+</script>
+</body>
+</html>

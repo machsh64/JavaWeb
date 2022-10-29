@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="Demo04.html" method="post">
+        昵称：<input type="text" name="nickName" value="请输入你的昵称" /><br />
+        密码：<input type="password" name="password" /> <br />
+        性别：<input type="radio" name="gender" value="male" /> 男
+        <input type="radio" name="gender" value="female" checked/> 女 <br />
+
+        爱好：<input type="checkbox" name="hobby" value="basketball" />篮球
+        <input type="checkbox" name="hobby" value="valenball" />羽毛球
+        <input type="checkbox" name="hobby" value="football" />足球
+        <input type="checkbox" name="hobby" value="volleyball" />排球<br />
+
+        星座：<select name="star">
+            <option value="1">天秤座</option>
+            <option value="2">金牛座</option>
+            <option value="3">白羊座</option>
+            <option value="4" selected>天蝎座</option>
+        </select><br />
+         
+        备注：<textarea name="remark" rows="4" cols="50"></textarea><br />
+        <input type="submit" value="注册">
+        <input type="reset" value="重置">
+        <input type="button" value="这是一个普通按钮">
+    </form>
+</body>
+
+</html>
+<!-- 表单  form 
+   input type = "text" 表示文本框  name = "nickName"  其中，name属性必须要指定，否则文本框的数据将来是不会发送给服务器的
+   input type = "password"  表示密码框
+   input type = "radio"  表示单选按钮 需要注意的是，name属性必须保持一致，这样才会有互斥的效果  可以通过checked属性设置默认选中的项
+   input type = "checkbox" 表示复选框 name属性值建议保持一直，这样服务器端获取值时，获取的是一个数组
+   select 表示下拉列表，每一个选项是option，其中value属性是发送给服务器的值，selected 表示默认选中的项
+   textarea 表示多行文本框 它的value值表示开始结束标签之间的内容
+   input type = "submit"  表示提交按钮
+   input type = "reset"   表示重置按钮
+   input type = "button"  表示普通按钮
+-->

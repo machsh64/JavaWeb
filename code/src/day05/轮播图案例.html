@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+
+    <style type="text/css">
+        #img_light {
+            width: 20%;
+        }
+    </style>
+
+</head>
+<body>
+
+<img id="img_light" src="img/picc.jpg">
+
+<input id="forward" type="button" value="前进">
+<a href="轮播图案例.html">轮播图页面</a>
+<input id="back" type="button" value="后退">
+
+<script rel="script">
+
+    //设置切换图片操作
+    var number = 0;
+    function roundIMG() {
+        var img = document.getElementById("img_light");
+        switch (number) {
+            case 0:
+                img.src = "img/picc_2.jpg";
+                number++;
+                break;
+            case 1:
+                img.src = "img/picc.jpg";
+                number = 0;
+                break;
+        }
+    }
+    //设置循环定时器
+    setInterval(roundIMG, 1000);
+
+    //设置前进后退按钮
+    document.getElementById("forward").onclick = function () {
+        history.forward();
+    }
+
+    document.getElementById("back").onclick = function () {
+        history.back();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="JSTest.css">
+
+</head>
+<body>
+<div id="div_main">
+    <div id="div_line">
+        <table id="div_table">
+            <tr>
+                <th class="w20">种类</th>
+                <th class="w20">数量</th>
+                <th class="w20">单价</th>
+                <th class="w20">总价</th>
+                <th class="w20">操作</th>
+            </tr>
+            <tr>
+                <td>苹果</td>
+                <td>200</td>
+                <td>5</td>
+                <td>1000</td>
+                <td><a href="javascript:void(0)" onclick = "onclickM(this)">删除</a></td>
+            </tr>
+            <tr>
+                <td>香蕉</td>
+                <td>300</td>
+                <td>5</td>
+                <td>1800</td>
+                <td><a href="javascript:void(0)" onclick = "onclickM(this)">删除</a></td>
+            </tr>
+            <tr>
+                <td>菠萝</td>
+                <td>700</td>
+                <td>2</td>
+                <td >1400</td>
+                <td><a href="javascript:void(0)" onclick = "onclickM(this)">删除</a></td>
+            </tr>
+            <tr id="price_tr">
+                <td>总价</td>
+                <td colspan="4" id="td_price">0</td>
+            </tr>
+        </table>
+        <div>
+            <input type="text" placeholder="请输入水果种类" name="name">
+            <input type="number" placeholder="数量" name="number">
+            <input type="number" placeholder="单价" name="price">
+            <button type="submit" id="submit">提交</button>
+        </div>
+    </div>
+</div>
+
+<script rel="script" src="JSTest.js"></script>
+</body>
+</html>

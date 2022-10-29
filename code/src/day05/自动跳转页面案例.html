@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳转案例</title>
+
+    <style type="text/css">
+        #p_span {
+            color: brown;
+        }
+
+        p{
+            margin-left: 50%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+<p><span id="p_span">5 </span>秒之后自动跳转</p>
+<script rel="script">
+
+    var sec = document.getElementById("p_span");
+    var num = 5;
+
+    function secREC() {
+        if (num > 0) {
+            num--;
+
+            sec.innerHTML = num + "";
+        } else {
+            open("https://www.bilibili.com/");
+            clearTimeout(numOut);
+        }
+    }
+
+    var numOut = setInterval(secREC, 1000);
+</script>
+
+</body>
+</html>

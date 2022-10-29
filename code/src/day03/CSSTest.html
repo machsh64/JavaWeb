@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css"> /*表示被style标签包围的范围是CSS环境，可以写CSS代码*/
+    /*标签样式表*/
+    p {
+        color: aqua;
+    }
+
+    /*类样式*/
+    .f20 {
+        font-size: 20px;
+    }
+
+    /*id样式*/
+    #p4 {
+        background-color: pink;
+        font-size: 24px;
+        font-weight: bolder;
+        font-style: italic;
+        font-family: 华文彩云;
+    }
+
+    /*组合样式*/
+    div p {
+        color: #e0a4a4;
+    }
+
+    div .f20 {
+        font-size: 30px;
+        font-family: 黑体;
+    }
+
+    </style>
+    <!--    &lt;!&ndash; 引用外部的CSS样式表&ndash;&gt;
+        <link rel="stylesheet" href="CSSTest.css">
+        -->
+</head>
+<body>
+<p>这里是段落一</p>
+<P>这里是段落二</P>
+<P class="f20">这里是段落三</P>
+<P id="p4">这里是段落四</P>  <!-- id属性在整个html文档中尽量保持唯一（虽然重复也不会报错）-->
+
+<div>
+    <p><span>hello</span></p>
+    <span>world</span>
+    <p>!!!</p>
+    <p class="f20"><span>空空格格</span></p>
+</div>
+</body>
+</html>

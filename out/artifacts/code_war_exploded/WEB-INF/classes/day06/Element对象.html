@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Element对象</title>
+</head>
+<body>
+
+<a>点我试一试</a>
+<input type="button" id="btn_set" value="设置属性">
+<input type="button" id="btn_re" value="删除属性">
+
+<script rel="script">
+    document.getElementById("btn_set").onclick = function () {
+        var element_div = document.getElementsByTagName("a")[0];
+        element_div.setAttribute("href","https://www.bilibili.com/");
+    }
+
+    var removeId = document.getElementById("btn_re");
+    removeId.onclick = function () {
+        var element_div = document.getElementsByTagName("a")[0];
+        element_div.removeAttribute("href");
+    }
+</script>
+</body>
+</html>

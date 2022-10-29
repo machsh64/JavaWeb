@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tomcat_webTest1.4_thymeleaf:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/tomcat_webTest1_4_thymeleaf_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="tomcat_webTest1.4_thymeleaf/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="javaee-facet-classes" facet="tomcat_webTest1.4_thymeleaf/web/Web" />
+          <element id="module-output" name="tomcat_fruit1.4-thymeleaf" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="lib_thymeleaf (2)" module-name="tomcat_webTest1.4_thymeleaf" />
+          <element id="library" level="module" name="lib_thymeleaf" module-name="tomcat_webTest1.4_thymeleaf" />
+          <element id="library" level="module" name="lib" module-name="tomcat_webTest1.4_thymeleaf" />
+          <element id="library" level="project" name="commons-dbutils-1.3" />
+          <element id="library" level="project" name="druid-1.1.10" />
+          <element id="library" level="module" name="lib (2)" module-name="tomcat_webTest1.4_thymeleaf" />
+          <element id="library" level="project" name="thymeleaf_lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

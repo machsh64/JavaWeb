@@ -1,0 +1,23 @@
+/*类样式*/
+.f20 {
+    font-size: 20px;
+}
+
+/*id样式*/
+#p4 {
+    background-color: pink;
+    font-size: 24px;
+    font-weight: bolder;
+    font-style: italic;
+    font-family: 华文彩云;
+}
+
+/*组合样式*/
+div p {
+    color: #e0a4a4;
+}
+
+div .f20 {
+    font-size: 30px;
+    font-family: 黑体;
+}
