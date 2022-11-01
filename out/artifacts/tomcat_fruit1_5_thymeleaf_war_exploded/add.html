@@ -1,0 +1,67 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="frucss/index.css">
+</head>
+<body>
+<div id="div_container">
+    <div id="div_fruit_list">
+        <p class="center f30">添加新库存</p>
+        <form method="post" action="add.do">
+            <table id="tbl_fruit1">
+                <tr>
+                    <th class="w20">名称</th>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="fname">
+                        </div>
+                    </td>
+                </tr>
+                <th class="w20">单价</th>
+                <td>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="price">
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                    <th class="w20">库存</th>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="fcount">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="w20">备注</th>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="remark">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <button type="submit" class="btn btn-primary btn-lg">添加</button>
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
