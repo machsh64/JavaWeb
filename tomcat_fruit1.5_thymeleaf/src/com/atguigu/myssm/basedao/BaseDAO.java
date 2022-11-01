@@ -89,11 +89,11 @@ public abstract class BaseDAO<T> {
     }
 
     //执行特殊值的查询
-    protected Object getValue(String sql){
+    protected Object getValue(String sql,Object... params){
         QueryRunner runner = new QueryRunner(source);
         ScalarHandler scalarHandler = new ScalarHandler();
         try {
-            return runner.query(sql,scalarHandler);
+            return runner.query(sql,scalarHandler,params);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

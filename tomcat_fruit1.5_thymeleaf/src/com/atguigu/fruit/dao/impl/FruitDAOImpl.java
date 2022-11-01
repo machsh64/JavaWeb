@@ -17,11 +17,12 @@ public class FruitDAOImpl extends BaseDAO<Fruit> implements FruitDAO {
 
     //返回一个Fruit对象的集合
     @Override
-    public List<Fruit> getFruitList(int PageNO) {
+    public List<Fruit> getFruitList(String keyValue, int PageNO) {
         String sql = "SELECT * " +
                 "FROM t_fruit " +
-                "LIMIT ?,?";
-        return executeQuery(sql, (PageNO - 1) * 5, 5);
+                "WHERE fname OR remark LIKE ? " +
+                "LIMIT ?,5";
+        return executeQuery(sql, "%"+keyValue+"%", (PageNO - 1) * 5);
     }
 
     //根据id返回一个Fruit对象
@@ -60,9 +61,10 @@ public class FruitDAOImpl extends BaseDAO<Fruit> implements FruitDAO {
 
     //获取数据库中的行数
     @Override
-    public int rowQuery(){
+    public int rowQuery(String keyValue) {
         String sql = "SELECT COUNT(fid) " +
-                "FROM t_fruit";
-        return ((Long) getValue(sql)).intValue();
+                "FROM t_fruit " +
+                "WHERE fname OR remark LIKE ?";
+        return ((Long) getValue(sql, "%"+keyValue+"%")).intValue();
     }
 }

@@ -22,11 +22,15 @@
     <div id="div_fruit_list">
         <p class="center f30">欢迎使用水果库存后台管理系统</p>
         <div style="float: right;padding-right: 20%">
-            <div style="float: left;margin-right: 5px">
+            <div id="search">
                 <form method="post" th:action="@{/index}" class="form-inline">
                     <div class="form-group" style="float: left">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="operator" placeholder="Input Here">
+                            <input type="hidden" name="operator" value="search"/>
+                            <label>
+                                <input type="text" class="form-control" name="keyValue" th:value="${session.keyValue}"
+                                       placeholder="Input Here"/>
+                            </label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">search</button>

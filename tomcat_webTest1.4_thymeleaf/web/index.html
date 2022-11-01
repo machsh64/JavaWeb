@@ -21,22 +21,26 @@
     <div id="div_customer_list">
         <p class="center f30">欢迎使用用户后台管理系统</p>
         <div style="float: right;padding-right: 20%">
-            <div style="float: left;margin-right: 5px">
-            <form method="post" th:action="@{/index}" class="form-inline">
-                <div class="form-group" style="float: left">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="operator" placeholder="Input Here">
+            <div id="search">
+                <form method="post" th:action="@{/index}" class="form-inline">
+                    <div class="form-group" style="float: left">
+                        <div class="input-group">
+                            <input type="hidden" name="operator" value="search"/>
+                            <label>
+                                <input type="text" class="form-control" name="keyValue" th:value="${session.keyValue}"
+                                       placeholder="Input Here"/>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">search</button>
-            </form>
-        </div>
+                    <button type="submit" class="btn btn-primary">search</button>
+                </form>
+            </div>
             <div style="float: right">
-            <a th:href="@{/add.html}">
-                <button type="button" class="btn btn-primary">
-                    Create
-                </button>
-            </a>
+                <a th:href="@{/add.html}">
+                    <button type="button" class="btn btn-primary">
+                        Create
+                    </button>
+                </a>
             </div>
         </div>
         <table id="tbl_customer">
@@ -50,7 +54,8 @@
                 <td colspan="4">对不起，信息库为空！</td>
             </tr>
             <tr th:unless="${#lists.isEmpty(session.customerList)}" th:each="customer : ${session.customerList}">
-                <td><a th:text="${customer.name}" th:href="@{/edit.do(id=${customer.id})}">姓名</a></td>
+                <td>
+                    <a th:text="${customer.name}" th:href="@{/edit.do(id=${customer.id})}">姓名</a></td>
                 <td th:text="${customer.email}">邮箱</td>
                 <td th:text="${customer.birth}">生日</td>
                 <td><img src="imgs/del.jpg" class="delImg" th:onclick="|delCustomer(${customer.id})|"/></td>

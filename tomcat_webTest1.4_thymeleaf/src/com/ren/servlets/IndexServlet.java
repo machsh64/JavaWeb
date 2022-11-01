@@ -35,28 +35,42 @@ public class IndexServlet extends ViewBaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int pageNo = 1;
-        List<Customer> customerList = null;
+        HttpSession session = req.getSession();
 
-        String pageNoStr = req.getParameter("pageNo");
-        if (!StringUtil.isEmpty(pageNoStr)){
-            pageNo = Integer.parseInt(pageNoStr);
+        //进行搜索事件的判断
+        String operator = req.getParameter("operator");
+        String keyValue = null;
+        if (!StringUtil.isEmpty(operator) && "search".equals(operator)){
+            //则此时时从表首的查询进入的
+            keyValue = req.getParameter("keyValue");
+            if (StringUtil.isEmpty(keyValue)){   //判断搜索框中是否为空，若为空则进行一次刷新
+                keyValue = "";
+            }
+            session.setAttribute("keyValue",keyValue);
+        } else {
+            //此时是从下方的页面按钮进入的
+            String pageNoStr = req.getParameter("pageNo");
+            if (!StringUtil.isEmpty(pageNoStr)){
+                pageNo = Integer.parseInt(pageNoStr);
+            }
+
+            Object keyValueObj = session.getAttribute("keyValue");
+            if (keyValueObj != null){
+                keyValue = (String) keyValueObj;
+            }else {
+                keyValue = "";
+            }
         }
 
         //将pageNo保存到session作用域
-        HttpSession session = req.getSession();
         session.setAttribute("pageNo",pageNo);
 
-        //进行搜索事件的判断，输入框若不为空则查询与输入的数据有关的数据
-        String operator = req.getParameter("operator");
-        if (!StringUtil.isEmpty(operator)){
-            customerList = customerDAO.getEspCustomers(operator,pageNo);
-        } else {
-            customerList = customerDAO.getCustomers(pageNo);   //进行页面选择 每页5列
-        }
+        //获取关键字或全部的列表
+        List<Customer> customerList = customerDAO.getCustomers(keyValue, pageNo);
         //保存到session作用域
         session.setAttribute("customerList",customerList);
 
-        int rows = customerDAO.getRow();   //获取总行数
+        int rows = customerDAO.getRow(keyValue);   //获取总行数
         int params = (rows+5-1) /5;    //获取总页数
 
         //将params保存到session作用域

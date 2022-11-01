@@ -18,21 +18,12 @@ import java.util.List;
 public class CustomerImpl extends BaseDAO<Customer> implements CustomerDAO {
     //获取用户数据的列表
     @Override
-    public List<Customer> getCustomers(int pageNo) {
+    public List<Customer> getCustomers(String keyValue, int pageNo) {
         String sql = "SELECT * " +
                 "FROM customers " +
-                "LIMIT ?,?";
-        return executeQuery(sql, (pageNo - 1) * 5, 5);
-    }
-
-    //进行关键字查询用户列表
-    @Override
-    public List<Customer> getEspCustomers(String Str, int pageNo) {
-        String sql = "SELECT * " +
-                "FROM customers " +
-                "WHERE name LIKE '%?%' " +
-                "LIMIT ?,?";
-        return executeQuery(sql, Str, (pageNo - 1) * 5, 5);
+                "WHERE name LIKE ? " +
+                "LIMIT ?,5";
+        return executeQuery(sql, "%"+keyValue+"%", (pageNo - 1) * 5);
     }
 
     //由id获取用户数据
@@ -69,11 +60,12 @@ public class CustomerImpl extends BaseDAO<Customer> implements CustomerDAO {
         return executeUpdate(sql, id);
     }
 
-    //获取数据库总行数
+    //获取数据库总行数  或获取与关键字有关的行数
     @Override
-    public int getRow() {
+    public int getRow(String keyValue) {
         String sql = "SELECT COUNT(id) " +
-                "FROM customers";
-        return ((Long) getValue(sql)).intValue();
+                "FROM customers " +
+                "WHERE name LIKE ?";
+        return ((Long) getValue(sql, "%"+keyValue+"%")).intValue();
     }
 }

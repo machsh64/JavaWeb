@@ -11,6 +11,12 @@ div{
 	float:left;
 }
 
+#search{
+	float: left;
+	margin-right: 5px;
+	padding-right: 12px;
+}
+
 #div_container{
 	width:80%;
 	height:100%;

@@ -27,37 +27,48 @@ public class IndexServlet extends ViewBaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         doGet(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-
         int pageNo = 1;
-        List<Fruit> fruitList = null;
-
-        String pageNoStr = req.getParameter("pageNo");
-        if (!StringUtil.isEmpty(pageNoStr)){
-            pageNo = Integer.parseInt(pageNoStr);
-        }
-
-        //将pageNo保存到Session作用域
         HttpSession session = req.getSession();
-        session.setAttribute("pageNo",pageNo);
 
         //进行搜索事件的判断，输入框若不为空则查询与输入的数据有关的数据
         String operator = req.getParameter("operator");
-        if (!StringUtil.isEmpty(operator)){
-
+        String keyValue = null;
+        if (!StringUtil.isEmpty(operator) && "search".equals(operator)){
+            //此时为从搜索框进入的
+            keyValue = req.getParameter("keyValue");
+            if (StringUtil.isEmpty(keyValue)){
+                keyValue = "";
+            }
+            session.setAttribute("keyValue",keyValue);
         } else {
-            fruitList = fruitDAO.getFruitList(pageNo);   //将pageNo赋值给list
+            //此时为从下方页面按钮进入的
+            String pageNoStr = req.getParameter("pageNo");
+            if (!StringUtil.isEmpty(pageNoStr)){
+                pageNo = Integer.parseInt(pageNoStr);
+            }
+
+            Object keyValueObj = session.getAttribute("keyValue");
+            if (keyValueObj != null){
+                keyValue = (String) keyValueObj;
+            }else {
+                keyValue = "";
+            }
         }
 
+        //将pageNo保存到Session作用域
+        session.setAttribute("pageNo",pageNo);
+
+        List<Fruit> fruitList = fruitDAO.getFruitList(keyValue,pageNo);   //将pageNo赋值给list
         //保存到session作用域
         session.setAttribute("fruitList",fruitList);
 
-        int rows = fruitDAO.rowQuery();  //获取总行数
+        int rows = fruitDAO.rowQuery(keyValue);  //获取总行数
         int params = (rows+5-1) /5;   //数据库中的总页数  每页5行数据
 
         //将params总页数保存到session作用域
