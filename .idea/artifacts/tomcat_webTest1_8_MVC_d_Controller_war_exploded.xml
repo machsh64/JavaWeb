@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tomcat_webTest1.8_MVC_d_Controller:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/tomcat_webTest1_8_MVC_d_Controller_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="tomcat_webTest1.8_MVC_d_Controller" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="lib" module-name="tomcat_webTest1.8_MVC_d_Controller" />
+          <element id="library" level="module" name="thymeleaf_lib" module-name="tomcat_webTest1.8_MVC_d_Controller" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="tomcat_webTest1.8_MVC_d_Controller/web/Web" />
+    </root>
+  </artifact>
+</component>

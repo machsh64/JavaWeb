@@ -3,7 +3,6 @@ function delCustomer(id) {
         window.location.href = 'delete.do?id='+id;
     }
 }
-
 function pageTr(pageNo){
     window.location.href = 'index?pageNo='+pageNo;
 }
