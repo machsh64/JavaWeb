@@ -5,17 +5,20 @@
       <module fileurl="file://$PROJECT_DIR$/Bootstrap/Bootstrap.iml" filepath="$PROJECT_DIR$/Bootstrap/Bootstrap.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/WebCode.iml" filepath="$PROJECT_DIR$/.idea/WebCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/code.iml" filepath="$PROJECT_DIR$/code/code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pro_servlet_api/pro_servlet_api.iml" filepath="$PROJECT_DIR$/pro_servlet_api/pro_servlet_api.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_fruit/tomcat_fruit.iml" filepath="$PROJECT_DIR$/tomcat_fruit/tomcat_fruit.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_fruit1.4_thymeleaf/tomcat_fruit1.4_thymeleaf.iml" filepath="$PROJECT_DIR$/tomcat_fruit1.4_thymeleaf/tomcat_fruit1.4_thymeleaf.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_fruit1.5_thymeleaf/tomcat_fruit1.5_thymeleaf.iml" filepath="$PROJECT_DIR$/tomcat_fruit1.5_thymeleaf/tomcat_fruit1.5_thymeleaf.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_fruit1.6_MVC/tomcat_fruit1.6_MVC.iml" filepath="$PROJECT_DIR$/tomcat_fruit1.6_MVC/tomcat_fruit1.6_MVC.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_fruit1.7_MVC_dispatcherServlet/tomcat_fruit1.7_MVC_dispatcherServlet.iml" filepath="$PROJECT_DIR$/tomcat_fruit1.7_MVC_dispatcherServlet/tomcat_fruit1.7_MVC_dispatcherServlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_fruit1.8_MVC_d_Controller/tomcat_fruit1.8_MVC_d_Controller.iml" filepath="$PROJECT_DIR$/tomcat_fruit1.8_MVC_d_Controller/tomcat_fruit1.8_MVC_d_Controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat_fruit2.0_MVC_service_ioc/tomcat_fruit2.0_MVC_service_ioc.iml" filepath="$PROJECT_DIR$/tomcat_fruit2.0_MVC_service_ioc/tomcat_fruit2.0_MVC_service_ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest/tomcat_webTest.iml" filepath="$PROJECT_DIR$/tomcat_webTest/tomcat_webTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest1.4_thymeleaf/tomcat_webTest1.4_thymeleaf.iml" filepath="$PROJECT_DIR$/tomcat_webTest1.4_thymeleaf/tomcat_webTest1.4_thymeleaf.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest1.6_MVC/tomcat_webTest1.6_MVC.iml" filepath="$PROJECT_DIR$/tomcat_webTest1.6_MVC/tomcat_webTest1.6_MVC.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest1.7_MVC_dispatcherServlet/tomcat_webTest1.7_MVC_dispatcherServlet.iml" filepath="$PROJECT_DIR$/tomcat_webTest1.7_MVC_dispatcherServlet/tomcat_webTest1.7_MVC_dispatcherServlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest1.8_MVC_d_Controller/tomcat_webTest1.8_MVC_d_Controller.iml" filepath="$PROJECT_DIR$/tomcat_webTest1.8_MVC_d_Controller/tomcat_webTest1.8_MVC_d_Controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat_webTest2.0_MVC_service_ioc/tomcat_webTest2.0_MVC_service_ioc.iml" filepath="$PROJECT_DIR$/tomcat_webTest2.0_MVC_service_ioc/tomcat_webTest2.0_MVC_service_ioc.iml" />
     </modules>
   </component>
 </project>

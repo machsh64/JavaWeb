@@ -88,6 +88,7 @@ public class DispatcherServlet extends ViewBaseServlet {
             Method[] methods = controlBeanObj.getClass().getDeclaredMethods();
             for (Method method : methods) {
                 if (operator.equals(method.getName())) {
+                    //对获取到的方法内部形参进行值传递
                     Parameter[] parameters = method.getParameters();
                     Object[] parameterValues = new Object[parameters.length];
                     for (int i = 0; i < parameters.length; i++) {

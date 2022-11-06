@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans>
+    <bean id="customerDAO" class="com.ren.customer.dao.impl.CustomerImpl"/>
+    <bean id="customerService" class="com.ren.service.impl.CustomerServiceImpl">
+        <property name="customerDAO" ref="customerDAO"/>
+    </bean>
+    <bean id="customer" class="com.ren.customer.controllers.CustomerController">
+        <property name="customerService" ref="customerService"/>
+    </bean>
+</beans>

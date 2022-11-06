@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans>
+
+    <bean id="fruitDAO" class="com.atguigu.fruit.dao.impl.FruitDAOImpl"/>
+    <bean id="fruitService" class="com.atguigu.fruit.service.impl.FruitServiceImpl">
+        <!-- property标签用来表示属性；name表示属性名；ref表示引用其他bean的id值-->
+        <property name="fruitDAO" ref="fruitDAO"/>
+    </bean>
+    <bean id="fruit" class="com.atguigu.fruit.controllers.FruitController">   <!--从此处为 需要进行属性赋值 的父类-->
+        <property name="fruitService" ref="fruitService"/>   <!--此处name为 父类中需要赋值的属性名称  ref为从hashMap存储的上方bean地址获取类 之后通过反射进行组装-->
+                                                              <!--  id“fruit” 类中  name”fruitService“ 属性 = ref” id‘fruitService’:'com.xxx.impl.fruitServiceImpl'.class.newInstance “-->
+    </bean>
+</beans>
+<!--
+Node 节点
+    Element 元素节点
+    Text 文本节点
+<sname>jim</sname>
+-->
+
+
+
+
+<!--
+1.概念
+HTML : 超文本标记语言
+XML : 可扩展的标记语言
+HTML是XML的一个子集
+
+2.XML包含三个部分：
+1) XML声明 ， 而且声明这一行代码必须在XML文件的第一行
+2) DTD 文档类型定义
+3) XML正文
+ -->
