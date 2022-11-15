@@ -42,9 +42,9 @@ public class DispatcherServlet extends ViewBaseServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //1，设置编码
-        request.setCharacterEncoding("utf-8");
-
+     /*   //1，设置编码
+        request.setCharacterEncoding("utf-8");   //在拦截器里已经进行了编码设置
+*/
         String servletPath = request.getServletPath();
         servletPath = servletPath.substring(1);
         int lastDoIndex = servletPath.lastIndexOf(".do");

@@ -1,22 +1,13 @@
 package com.ren.customer.controllers;
 
-import com.ren.customer.dao.CustomerDAO;
-import com.ren.customer.dao.impl.CustomerImpl;
 import com.ren.customer.pojo.Customer;
-import com.ren.myssm.myspringmvc.ViewBaseServlet;
 import com.ren.myssm.util.StringUtil;
-import com.ren.service.CustomerService;
-import com.ren.service.impl.CustomerServiceImpl;
+import com.ren.customer.service.CustomerService;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;

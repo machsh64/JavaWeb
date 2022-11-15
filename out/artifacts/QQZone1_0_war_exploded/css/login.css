@@ -1,0 +1,33 @@
+html,body{
+    height: 100%;
+}
+
+body{
+    background-color: #5bc0de;
+    min-height: 512px;
+    min-width: 1000px;
+}
+
+#div0{
+    background-color: #E8E8FF;
+    border-radius: 8px;
+    width:50%;
+    min-width: 610px;
+    max-width: 700px;
+    margin-left:25%;
+    margin-top:14%;
+}
+
+#div_container{
+    border:1px solid #e1e5ea;
+    margin-left:10%;
+    width:500px;
+    padding-bottom: 50px;
+    margin-top:44px;
+    margin-bottom:34px;
+}
+#div_container form{
+    width: 400px;
+    margin-left:16%;
+    border:0px solid red;
+}

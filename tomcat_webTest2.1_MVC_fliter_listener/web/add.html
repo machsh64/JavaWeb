@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="div_container">
+    <div id="div_customer_list">
+        <p class="center f30">添加信息</p>
+        <form method="post" action="customer.do">
+            <input type="hidden" name="operator" value="add">
+            <table id="tbl_customer1">
+                <tr>
+                    <th class="w20">姓名</th>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="w20">邮箱</th>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="email">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="w20">生日</th>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" name="birth">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <button type="submit" class="btn btn-primary btn-lg">添加</button>
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>
