@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Bootstrap/Bootstrap.iml" filepath="$PROJECT_DIR$/Bootstrap/Bootstrap.iml" />
       <module fileurl="file://$PROJECT_DIR$/QQZone/QQZone.iml" filepath="$PROJECT_DIR$/QQZone/QQZone.iml" />
       <module fileurl="file://$PROJECT_DIR$/QQZone1.0/QQZone1.0.iml" filepath="$PROJECT_DIR$/QQZone1.0/QQZone1.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QQZone1.1/QQZone1.1.iml" filepath="$PROJECT_DIR$/QQZone1.1/QQZone1.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/WebCode.iml" filepath="$PROJECT_DIR$/.idea/WebCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/code/code.iml" filepath="$PROJECT_DIR$/code/code.iml" />
       <module fileurl="file://$PROJECT_DIR$/pro20-fruit2.3-mvc-transaction/pro20-fruit2.3-mvc-transaction.iml" filepath="$PROJECT_DIR$/pro20-fruit2.3-mvc-transaction/pro20-fruit2.3-mvc-transaction.iml" />
@@ -25,6 +26,7 @@
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest1.8_MVC_d_Controller/tomcat_webTest1.8_MVC_d_Controller.iml" filepath="$PROJECT_DIR$/tomcat_webTest1.8_MVC_d_Controller/tomcat_webTest1.8_MVC_d_Controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest2.0_MVC_service_ioc/tomcat_webTest2.0_MVC_service_ioc.iml" filepath="$PROJECT_DIR$/tomcat_webTest2.0_MVC_service_ioc/tomcat_webTest2.0_MVC_service_ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest2.1_MVC_fliter_listener/tomcat_webTest2.1_MVC_fliter_listener.iml" filepath="$PROJECT_DIR$/tomcat_webTest2.1_MVC_fliter_listener/tomcat_webTest2.1_MVC_fliter_listener.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web20sch/web20sch.iml" filepath="$PROJECT_DIR$/web20sch/web20sch.iml" />
     </modules>
   </component>
 </project>

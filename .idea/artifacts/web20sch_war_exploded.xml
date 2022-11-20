@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="web20sch:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/web20sch_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="web20sch" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="lib" module-name="web20sch" />
+          <element id="library" level="module" name="thymeleaf_lib" module-name="web20sch" />
+          <element id="library" level="module" name="JUnit4" module-name="web20sch" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="web20sch/web/Web" />
+    </root>
+  </artifact>
+</component>

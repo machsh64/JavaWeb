@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Site Title-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" href="bootstrap-fa/images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic">
+    <link rel="stylesheet" href="bootstrap-fa/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-fa/css/style.css">
+
+    <title>Contact Us</title>
+  </head>
+  <body>
+    <!-- Page Loader-->
+    <div id="page-loader">
+      <div class="page-loader-body">
+        <div class="cssload-spinner">
+          <div class="cssload-cube cssload-cube0"></div>
+          <div class="cssload-cube cssload-cube1"></div>
+          <div class="cssload-cube cssload-cube2"></div>
+          <div class="cssload-cube cssload-cube3"></div>
+          <div class="cssload-cube cssload-cube4"></div>
+          <div class="cssload-cube cssload-cube5"></div>
+          <div class="cssload-cube cssload-cube6"> </div>
+          <div class="cssload-cube cssload-cube7"></div>
+          <div class="cssload-cube cssload-cube8"></div>
+          <div class="cssload-cube cssload-cube9"></div>
+          <div class="cssload-cube cssload-cube10"></div>
+          <div class="cssload-cube cssload-cube11"></div>
+          <div class="cssload-cube cssload-cube12"></div>
+          <div class="cssload-cube cssload-cube13"></div>
+          <div class="cssload-cube cssload-cube14"></div>
+          <div class="cssload-cube cssload-cube15"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Page-->
+    <div class="page">
+      <!-- Page Header-->
+      <header class="section page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="5px" data-lg-stick-up-offset="5px" data-md-stick-up="true" data-lg-stick-up="true">
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                  <!-- RD Navbar Brand-->
+                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
+                      <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/><img class="brand__logo-light" src="bootstrap-fa/images/logo-inverse-237x35.png" alt="" width="237" height="35"/></div>
+                    <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
+                  </div>
+                </div>
+                <!-- headline a组件-->
+                <div class="rd-navbar-nav-wrap">
+                  <div class="rd-navbar-element">
+                    <!-- 登录下拉 button-->
+                    <ul class="list-icons list-inline-sm">
+                      <div class="btn-group " role="group">
+                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          登  录
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <ul class="rd-navbar-nav">
+                            <li><a href="#">作者登录<span></span><span></span><span></span><span></span></a></li><br/>
+                            <li><a href="#">用户登录<span></span><span></span><span></span><span></span></a></li>
+                          </ul>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <li><a th:href="@{/page.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
+                    </li>
+                    <li><a th:href="@{/page.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a>
+                    </li>
+                    <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
+                    <!--th:if="${session.loginId}!="-->
+                    <li><a th:href="@{/topic.do?operate=authorWadmin&}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                    <li class="active"><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Breadcrumbs-->
+      <section class="breadcrumbs-custom bg-image" style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
+        <div class="shell">
+          <h1 class="breadcrumbs-custom__title">Contact Us</h1>
+          <ul class="breadcrumbs-custom__path">
+            <li><a href="index.html">主页</a></li>
+            <li class="active">Contact Us</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Get in Touch-->
+      <section class="section section-md bg-white text-center">
+        <div class="shell">
+          <div class="range range-md-center">
+            <div class="cell-md-11 cell-lg-10">
+              <h2 class="text-bold">Get in Touch</h2>
+              <p><span class="box-width-2">We are available 24/7 by fax, e-mail or by phone. You can also use our quick contact form to ask a question about our services and projects.</span></p>
+              <div class="layout-columns"> 
+                <div class="layout-columns__main">
+                  <div class="layout-columns__main-inner">
+                    <!-- RD Mailform-->
+                    <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                      <div class="form-wrap">
+                        <input class="form-input" id="contact-date" type="text" data-time-picker="date" name="date" data-constraints="@Required">
+                        <label class="form-label" for="contact-date">Event Date</label>
+                      </div>
+                      <div class="form-wrap">
+                        <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
+                        <label class="form-label" for="contact-name">Your Name</label>
+                      </div>
+                      <div class="form-wrap">
+                        <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
+                        <label class="form-label" for="contact-email">E-mail</label>
+                      </div>
+                      <div class="form-wrap">
+                        <label class="form-label" for="contact-message">Your Message</label>
+                        <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                      </div>
+                      <div class="form-wrap form-button offset-1">
+                        <button class="button button-block button-primary-outline button-ujarak" type="submit">make an appointment</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="layout-columns__aside">
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">Ren的主页</p>
+                    <div class="divider-modern"></div>
+                    <ul class="list-inline-xs">
+                      <li><a class="icon icon-md icon-gray-7 fa fa-github" href="https://github.com/machsh64"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-television" href="https://space.bilibili.com/155564576"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-google" href="#"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa  fa-qq" href="https://wpa.qq.com/msgrd?v=3&uin=3256772458&site=qq&menu=yes"></a></li>
+                    </ul>
+                  </div>
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">GitHub</p>
+                    <div class="divider-modern"></div>
+                    <div class="unit unit-horizontal unit-spacing-xxs">
+                      <div class="unit__left"><span class="icon icon-md icon-primary glyphicon glyphicon-user"></span></div>
+                      <div class="unit__body"><a href="https://github.com/machsh64"> machshren@gmail.com</a></div>
+                    </div>
+                  </div>
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">地  址</p>
+                    <div class="divider-modern"></div>
+                    <div class="unit unit-horizontal unit-spacing-xxs">
+                      <div class="unit__left"><span class="icon icon-md icon-primary material-icons-location_on"></span></div>
+                      <div class="unit__body"><a href="#">BJU 宝鸡市 陕西省</a></div>
+                    </div>
+                  </div>
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">options</p>
+                    <div class="divider-modern"></div>
+                    <div class="unit unit-horizontal unit-spacing-xxs">
+                      <div class="unit__left"><span class="icon icon-md icon-primary fa fa-hand-o-right"></span></div>
+                      <div class="unit__body"><span>不 要 联 系 我</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page Footer-->
+      <footer class="footer-centered section bg-gray-darker">
+        <div class="shell">
+          <div class="range range-sm-center">
+            <div class="cell-sm-10 cell-md-8 cell-lg-6">
+              <!-- Brand--><a class="brand" href="index.html">
+                <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/>  <!-- Logo导航至首页 -->
+                </div><span class="brand__slogan">李金章，宼航航，Ren</span></a>
+              <ul class="list-icons list-inline-sm">
+                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
+              </ul>
+              <!-- Rights-->
+              <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="bootstrap-fa/js/core.min.js"></script>
+    <script src="bootstrap-fa/js/script.js"></script>
+  </body>
+</html>

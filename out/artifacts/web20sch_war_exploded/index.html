@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Site Title-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" href="bootstrap-fa/images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic">
+    <link rel="stylesheet" href="bootstrap-fa/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-fa/css/style.css">
+
+    <title>Home</title>
+  </head>
+  <body>
+    <!-- 页面加载动画 -->
+    <div id="page-loader">
+      <div class="page-loader-body">
+        <div class="cssload-spinner">
+          <div class="cssload-cube cssload-cube0"></div>
+          <div class="cssload-cube cssload-cube1"></div>
+          <div class="cssload-cube cssload-cube2"></div>
+          <div class="cssload-cube cssload-cube3"></div>
+          <div class="cssload-cube cssload-cube4"></div>
+          <div class="cssload-cube cssload-cube5"></div>
+          <div class="cssload-cube cssload-cube6"> </div>
+          <div class="cssload-cube cssload-cube7"></div>
+          <div class="cssload-cube cssload-cube8"></div>
+          <div class="cssload-cube cssload-cube9"></div>
+          <div class="cssload-cube cssload-cube10"></div>
+          <div class="cssload-cube cssload-cube11"></div>
+          <div class="cssload-cube cssload-cube12"></div>
+          <div class="cssload-cube cssload-cube13"></div>
+          <div class="cssload-cube cssload-cube14"></div>
+          <div class="cssload-cube cssload-cube15"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Page -->
+    <div class="page">
+      <!-- Page header -->
+      <header class="section page-header">
+        <!-- headline-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="5px" data-lg-stick-up-offset="5px" data-md-stick-up="true" data-lg-stick-up="true">
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <!-- headline Panel-->
+                <div class="rd-navbar-panel">
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                  <!-- headline logo-->
+                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
+                      <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="446" height="75"/></div>
+                    <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
+                  </div>
+                </div>
+                <!-- headline a组件-->
+                <div class="rd-navbar-nav-wrap">
+                  <div class="rd-navbar-element">
+                    <!-- 登录下拉 button-->
+                    <ul class="list-icons list-inline-sm">
+                      <div class="btn-group " role="group">
+                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          登  录
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <ul class="rd-navbar-nav">
+                            <li><a th:href="@{page.do?operate=login&logNum=0}">作者登录<span></span><span></span><span></span><span></span></a></li><br/>
+                            <li><a th:href="@{page.do?operate=login&logNum=1}">用户登录<span></span><span></span><span></span><span></span></a></li>
+                          </ul>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- headline 分页导航-->
+                  <ul class="rd-navbar-nav">
+                    <li class="active"><a th:href="@{/page.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
+                    </li>
+                    <li><a th:href="@{/page.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a>
+                    </li>
+                    <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
+                    <!--th:if="${session.loginId}!="-->
+                    <li><a th:href="@{/topic.do?operate=authorWadmin&}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                    <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- 全局居中 -->
+      <section class="section text-center">
+        <!-- 轮播图-->
+        <div class="slick-wrap">
+          <div class="slick-slider slick-style-1" data-arrows="true" data-autoplay="true" data-loop="true" data-dots="true" data-swipe="true" data-xs-swipe="true" data-sm-swipe="false" data-items="1" data-sm-items="3" data-md-items="3" data-lg-items="3" data-center-mode="true" data-lightgallery="group-slick">
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="img/warp_01.jpg" data-lightgallery="item"><img class="thumb-ann__image" src="img/warp_01.jpg" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">“伟大历程”</p>
+                      <p class="thumb-ann__text">习近平缓步瞻仰会场，他表示，党的七大在党的历史上具有重要里程碑意义，标志着我们党在政治上思想上组织上走向了成熟。在政治上，党通过延安整风，使全党团结在毛泽东的旗帜下，实现了党的空前统一和团结。在思想上，党确立了毛泽东思想在全党的指导地位，把毛泽东思想写入了党章。在组织上，党形成了一支高举毛泽东旗帜的久经考验的政治家集团。党的七大在党的历史上具有极其重要的地位，为党后来不断从胜利走向胜利指明了正确方向、开辟了正确道路。</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="img/warp_02.jpg" data-lightgallery="item"><img class="thumb-ann__image" src="img/warp_02.jpg" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">”二十大精神热潮“</p>
+                      <p class="thumb-ann__text">海南全省领导干部大会在海口召开，传达学习党的二十大精神。省委书记沈晓明强调，要迅速掀起学习宣传贯彻党的二十大精神热潮，以习近平新时代中国特色社会主义思想为指引，落实好党中央各项决策部署，为实现中国式现代化作出海南贡献。</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="img/warp_02.jpg" data-lightgallery="item"><img class="thumb-ann__image" src="img/warp_02.jpg" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">“西盟工匠”</p>
+                      <p class="thumb-ann__text">西盟佤族自治县立足新发展阶段，贯彻新发展理念，弘扬“不以事艰而不为、不以任重而畏缩”的西盟精神，创新实施“西盟工匠”培育计划，突出党建引领、产业铺路、工匠带路，接续推进巩固拓展脱贫攻坚成果同乡村振兴的有效衔接。</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="bootstrap-fa/images/group-image-2-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ann__image" src="bootstrap-fa/images/home1-4-961x664.jpg" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">Image #4</p>
+                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Line-->
+      <section class="section section-md bg-white">
+        <div class="shell">
+          <div class="range range-50 range-sm-center range-md-left range-md-middle range-md-reverse">
+            <div class="cell-sm-6 wow fadeInRightSmall">
+              <div class="thumb-line"><img src="img/LineDe.jpg" alt="" width="1062" height="1280"/>
+              </div>
+            </div>
+            <div class="cell-sm-6">
+              <div class="box-width-3">
+                <p class="heading-1 wow fadeInLeftSmall">党的20大精神</p>
+                <article class="quote-big wow fadeInLeftSmall" data-wow-delay=".1s">
+                  <p class="q">学习贯彻中共二十大精神，形成同心共圆中国梦的强大合力</p>
+                </article>
+                <div class="divider wow fadeInLeftSmall" data-wow-delay=".2s"></div>
+                <p class="wow fadeInLeftSmall" data-wow-delay=".3s">　中共十八大以来，以习近平同志为核心的中共中央统筹中华民族伟大复兴战略全局和世界百年未有之大变局，团结带领14亿多中国人民有效应对严峻复杂的国际形势和接踵而至的巨大风险挑战，推动党和国家事业取得历史性成就、发生历史性变革，实现中华民族伟大复兴进入了不可逆转的历史进程。</p>
+                <a class="button button-primary-outline button-ujarak button-size-1 wow fadeInLeftSmall" href="https://www.samr.gov.cn/zt/20djs/20djs/" data-wow-delay=".4s">了解更多</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 划背景图 -->
+            <section class="section parallax-container bg-image-dark" data-parallax-img="bootstrap-fa/images/bg-image-7-1920x1244.jpg">
+              <div class="parallax-content">
+                <div class="section-md text-center">
+                  <div class="shell">
+                    <div class="range range-50 range-lg-bottom">
+                      <div class="cell-xs-6 cell-md-3 wow fadeIn">
+                        <!-- Box award-->
+                        <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-1-134x98-inverse.png" alt="" width="134" height="98"/>
+                          <h3 class="box-award__title">Best photo of the year</h3>
+                          <div class="box-award__divider"></div>
+                          <time class="box-award__time" datetime="2010">2010</time>
+                        </article>
+                      </div>
+                      <div class="cell-xs-6 cell-md-3 wow fadeIn" data-wow-delay=".1s">
+                        <!-- Box award-->
+                        <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-2-115x117-inverse.png" alt="" width="115" height="117"/>
+                          <h3 class="box-award__title">Best nature photo</h3>
+                          <div class="box-award__divider"></div>
+                          <time class="box-award__time" datetime="2014">2014</time>
+                        </article>
+                      </div>
+                      <div class="cell-xs-6 cell-md-3 wow fadeIn" data-wow-delay=".2s">
+                        <!-- Box award-->
+                        <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-3-116x103-inverse.png" alt="" width="116" height="103"/>
+                          <h3 class="box-award__title">Best love story photo</h3>
+                          <div class="box-award__divider"></div>
+                          <time class="box-award__time" datetime="2015">2015</time>
+                        </article>
+                      </div>
+                      <div class="cell-xs-6 cell-md-3 wow fadeIn" data-wow-delay=".3s">
+                        <!-- Box award-->
+                        <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-4-131x96-inverse.png" alt="" width="131" height="96"/>
+                          <h3 class="box-award__title">Photographer of the year</h3>
+                          <div class="box-award__divider"></div>
+                          <time class="box-award__time" datetime="2016">2016</time>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+      <!-- Topic -->
+      <section class="section section-md bg-gray-lighter text-center">
+        <div class="shell">
+          <p class="heading-1">学习贯彻20大精神</p>
+          <div class="range range-30">
+
+            <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall">
+              <!-- Post boxed-->
+              <article class="post-boxed">
+                <ul class="post-boxed__meta">
+                  <li>
+                    <time datetime="2019">Jul 20, 2019</time>
+                  </li>
+                </ul>
+                <div class="post-boxed__main">
+                  <h3 class="post-boxed__title"><a href="#">Becoming a King and Queen for </a></h3>
+                  <p>For one day, the two of you are the focus of attention. The concerns of the world slip away as your...</p>
+                </div>
+                <div class="post-boxed__aside">
+                  <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                    <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
+                    </div>
+                    <div class="unit__body">
+                      <h6 class="text-uppercase">by Susan Parker</h6>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".15s">
+              <!-- Post boxed-->
+              <article class="post-boxed">
+                <ul class="post-boxed__meta">
+                  <li>
+                    <time datetime="2019">Jul 15, 2019</time>
+                  </li>
+                </ul>
+                <div class="post-boxed__main">
+                  <h3 class="post-boxed__title"><a href="#">How to Make Great Wedding Photos</a></h3>
+                  <p>Today I’m going to answer the question that my clients ask almost after every photo shoot. It’s a question...</p>
+                </div>
+                <div class="post-boxed__aside">
+                  <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                    <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
+                    </div>
+                    <div class="unit__body">
+                      <h6 class="text-uppercase">by Susan Parker</h6>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+              <!-- Post boxed-->
+              <article class="post-boxed">
+                <ul class="post-boxed__meta">
+                  <li>
+                    <time datetime="2019">Jul 5, 2019</time>
+                  </li>
+                </ul>
+                <div class="post-boxed__main">
+                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
+                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                </div>
+                <div class="post-boxed__aside">
+                  <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                    <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
+                    </div>
+                    <div class="unit__body">
+                      <h6 class="text-uppercase">by Susan Parker</h6>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+              <!-- Post boxed-->
+              <article class="post-boxed">
+                <ul class="post-boxed__meta">
+                  <li>
+                    <time datetime="2019">Jul 5, 2019</time>
+                  </li>
+                </ul>
+                <div class="post-boxed__main">
+                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
+                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                </div>
+                <div class="post-boxed__aside">
+                  <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                    <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
+                    </div>
+                    <div class="unit__body">
+                      <h6 class="text-uppercase">by Susan Parker</h6>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+              <!-- Post boxed-->
+              <article class="post-boxed">
+                <ul class="post-boxed__meta">
+                  <li>
+                    <time datetime="2019">Jul 5, 2019</time>
+                  </li>
+                </ul>
+                <div class="post-boxed__main">
+                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
+                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                </div>
+                <div class="post-boxed__aside">
+                  <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                    <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
+                    </div>
+                    <div class="unit__body">
+                      <h6 class="text-uppercase">by Susan Parker</h6>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+              <!-- Post boxed-->
+              <article class="post-boxed">
+                <ul class="post-boxed__meta">
+                  <li>
+                    <time datetime="2019">Jul 5, 2019</time>
+                  </li>
+                </ul>
+                <div class="post-boxed__main">
+                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
+                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                </div>
+                <div class="post-boxed__aside">
+                  <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                    <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
+                    </div>
+                    <div class="unit__body">
+                      <h6 class="text-uppercase">by Susan Parker</h6>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page Footer-->
+      <footer class="footer-centered section bg-gray-darker">
+        <div class="shell">
+          <div class="range range-sm-center">
+            <div class="cell-sm-10 cell-md-8 cell-lg-6">
+              <!-- Brand--><a class="brand" href="index.html">
+                <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/></div>
+              <span class="brand__slogan">李金章，宼航航，Ren</span></a>
+              <ul class="list-icons list-inline-sm">
+                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
+                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
+              </ul>
+              <!-- Rights-->
+              <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="bootstrap-fa/js/core.min.js"></script>
+    <script src="bootstrap-fa/js/script.js"></script>
+  </body>
+</html>

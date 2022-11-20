@@ -1,0 +1,102 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
+    <script language="JavaScript">
+        function showDelImg(imgId){
+            document.getElementById(imgId).style.display='inline';
+        }
+        function hiddenDelImg(imgId){
+            document.getElementById(imgId).style.display='none';
+        }
+        function deleteTopic(topicId) {
+            alert("yes");
+            if (confirm('是否确认删除?')) {
+                window.location.href = "topic.do?operate=delete&topicId=" + topicId;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div_back_to_topic_list">
+        <a th:href="@{|/user.do?operate=friendPage&friendId=${session.friend.id}|}">返回日志列表</a>
+    </div>
+    <div id="div_topic_detail">
+        <div id="div_topic_info">
+            <!-- Topic自身信息 -->
+            <table id="tbl_topic_info">
+                <tr>
+                    <td rowspan="2" class="w14 h96">
+                        <div class="h64 center " style="width:100%;">
+                            <img class="img56 " th:src="@{|/imgs/${session.topic.author.headImg}|}"/>
+                        </div>
+                        <div th:text="${session.topic.author.nickName}" class="h32 center" style="width:100%;">作者姓名测试</div>
+                    </td>
+                    <td class="topic_title" onmousemove="showDelImg('img01')" onmouseout="hiddenDelImg('img01')">
+                        <img id="img01" style="float: right;margin-top:2px;margin-right:2px;display: none;" th:src="@{/imgs/del.jpg}" th:onclick="deleteTopic(${session.topic.id})"/>
+                        <span th:text="${session.topic.title}">标题测试</span>
+                        <span class="title_date_right" th:text="${session.topic.getTopicDate()}">日志发表时间测试</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td th:text="${session.topic.content}">日志内容测试</td>
+                </tr>
+            </table>
+        </div>
+        <div id="div_reply_list">
+            <!-- reply信息 -->
+            <table class="tbl_reply_info" th:if="${#lists.isEmpty(session.topic.replyList)}">
+                此时没有任何回复
+            </table>
+            <table class="tbl_reply_info" th:unless="${#lists.isEmpty(session.topic.replyList)}" th:each="reply : ${session.topic.replyList}">
+                <tr>
+                    <td rowspan="2" class="w14 h88">
+                        <div class="h56 center" style="width:100%;">
+                            <img class="img48" th:src="@{|/imgs/${reply.author.headImg}|}"/>
+                        </div>
+                        <div class="h32 center" style="width:100%;" th:text="${reply.author.nickName}">回复人姓名测试</div>
+                    </td>
+                    <td class="reply_title" onmouseover="showDelImg('img02')" onmouseout="hiddenDelImg('img02')">
+                        <span th:text="@{|回复: ${session.topic.content}|}">回复的日志内容测试</span>
+                        <img id="img02" style="float: right;margin-top:2px;width:24px;height: 24px;margin-right:2px;display: none;" src="../imgs/del.jpg"/>
+                        <span class="title_date_right" th:text="${reply.replyDate}">评论日期测试</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span th:text="${reply.content}">回复的内容测试</span><br/>
+                        <ul style="width: 96%;border:1px dotted lightgray;list-style-type: none;padding-left:8px;padding-right:8px;">
+                            <li style="color:#6e0000;font-size:12px;width: 100%;border:0px solid red;" th:text="${reply.getHostReply().content}">主人回复内容测试</li>
+                            <li style="color:#6e0000;font-size:12px;width:100%;border:0px solid blue;text-align: right;margin-right: 8px;" th:text="${reply.getHostReply().hostReplyDate}">主人回复时间测试</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="div_add_reply">
+        <p class="add_reply_title">添加回复</p>
+        <form action="" method="post">
+            <input type="hidden" name="topicId" th:value="${session.topic.id}"/>
+            <input type="hidden" name="authorId" th:value="${session.friend.id}">
+            <table>
+                <tr>
+                    <th style="width: 25%">回复日志：</th>
+                    <td><input type="text" th:value="${session.topic.content}" readonly /></td>
+                </tr>
+                <tr>
+                    <th>回复内容：</th>
+                    <td><textarea name="replyContent" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" value=" 回 复 "/>
+                        <input type="reset" value=" 重 置 "/>
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

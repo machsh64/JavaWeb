@@ -12,21 +12,21 @@
 ]>
 
 <beans>
-    <bean id="userBasicDAO" class="com.atguigu.qqzone.dao.impl.UserBasicDAOImpl"/>
-    <bean id="topicDAO" class="com.atguigu.qqzone.dao.impl.TopicDAOImpl"/>
+    <bean id="userBasicDAO" class="com.ren.qqzone.dao.impl.UserBasicDAOImpl"/>
+    <bean id="topicDAO" class="com.ren.qqzone.dao.impl.TopicDAOImpl"/>
 
-    <bean id="userBasicService" class="com.atguigu.qqzone.service.impl.UserBasicServiceImpl">
+    <bean id="userBasicService" class="com.ren.qqzone.service.impl.UserBasicServiceImpl">
         <property name="userBasicDAO" ref="userBasicDAO"/>
     </bean>
 
-    <bean id="topicService" class="com.atguigu.qqzone.service.impl.TopicServiceImpl">
+    <bean id="topicService" class="com.ren.qqzone.service.impl.TopicServiceImpl">
         <property name="topicDAO" ref="topicDAO"/>
     </bean>
 
-    <bean id="user" class="com.atguigu.qqzone.controller.UserController">
+    <bean id="user" class="com.ren.qqzone.controller.UserController">
         <property name="userBasicService" ref="userBasicService"/>
         <property name="topicService" ref="topicService"/>
     </bean>
-    <bean id="page" class="com.atguigu.myssm.myspringmvc.PageController"/>
+    <bean id="page" class="com.ren.myssm.myspringmvc.PageController"/>
 
 </beans>
