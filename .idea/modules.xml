@@ -27,6 +27,7 @@
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest2.0_MVC_service_ioc/tomcat_webTest2.0_MVC_service_ioc.iml" filepath="$PROJECT_DIR$/tomcat_webTest2.0_MVC_service_ioc/tomcat_webTest2.0_MVC_service_ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_webTest2.1_MVC_fliter_listener/tomcat_webTest2.1_MVC_fliter_listener.iml" filepath="$PROJECT_DIR$/tomcat_webTest2.1_MVC_fliter_listener/tomcat_webTest2.1_MVC_fliter_listener.iml" />
       <module fileurl="file://$PROJECT_DIR$/web20sch/web20sch.iml" filepath="$PROJECT_DIR$/web20sch/web20sch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web20sch1.2/web20sch1.2.iml" filepath="$PROJECT_DIR$/web20sch1.2/web20sch1.2.iml" />
     </modules>
   </component>
 </project>

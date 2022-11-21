@@ -12,6 +12,7 @@ import com.ren.web20.pojo.Topic;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -34,7 +35,15 @@ public class DAOTest {
 
     @Test
     public void test() {
-        System.out.println("*************************");
+        LocalDateTime localDateTime = LocalDateTime.of(2001,12,11,3,22,13);
+        Topic topic = new Topic("东东妈妈", "东东妈妈是东东的妈妈", "东东只有东东妈妈一个妈妈，东东妈妈只是东东一个人的妈妈", localDateTime, "new York", 1);
+        /*topicDAO.addTopic(topic);*/
+
+        List<Topic> topicList = topicDAO.getTopicList(1);
+        topicList.forEach(System.out::println);
+
+
+        /*System.out.println("*************************");
 
         Author author = userBasicDAO.login("w001", "ok");
         System.out.println(author);
@@ -48,6 +57,6 @@ public class DAOTest {
         Admin admin = adminBasicDAO.ADMINLogin("w001", "ok");
         System.out.println(admin);
         System.out.println("*************************");
-
+*/
     }
 }

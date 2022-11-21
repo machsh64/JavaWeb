@@ -51,9 +51,9 @@
                         <!-- RD Navbar Panel-->
                         <div class="rd-navbar-panel">
                             <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                            <!-- RD Navbar Brand-->
-                            <div class="rd-navbar-brand"><a class="brand" href="index.html">
-                                <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/><img class="brand__logo-light" src="bootstrap-fa/images/logo-inverse-237x35.png" alt="" width="237" height="35"/></div>
+                            <!-- headLine Logo -->
+                            <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                                <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/></div>
                                 <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
                             </div>
                         </div>
@@ -63,10 +63,11 @@
                                 <!-- 登录下拉 button-->
                                 <ul class="list-icons list-inline-sm">
                                     <div class="btn-group " role="group">
-                                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            登  录
+                                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            登 录
                                             <span class="caret"></span>
                                         </button>
+                                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                                         <ul class="dropdown-menu">
                                             <ul class="rd-navbar-nav">
                                                 <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
@@ -98,10 +99,11 @@
     <!-- Breadcrumbs-->
     <section class="breadcrumbs-custom bg-image" style="background-image: url(img/loginbg.png);"> <!-- 1920 301 -->
         <div class="shell">
-            <h1 class="breadcrumbs-custom__title" th:if="${session.logNum}==0">用户 登录</h1>
-            <h1 class="breadcrumbs-custom__title" th:if="${session.logNum}==1">管理员 登录</h1>
+            <h1 class="breadcrumbs-custom__title" th:if="${session.logNum==0 and(session.enrollNum==0)}">用户 登录</h1>
+            <h1 class="breadcrumbs-custom__title" th:if="${session.logNum==1 and(session.enrollNum==0)}">管理员 登录</h1>
+            <h1 class="breadcrumbs-custom__title" th:if="${session.enrollNum==1}">用户 注册</h1>
             <ul class="breadcrumbs-custom__path">
-                <li><a href="index.html">主页</a></li>
+                <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
                 <li class="active">登录</li>
             </ul>
         </div>
@@ -115,8 +117,11 @@
                     <div class="layout-columns">
                         <div class="layout-columns__main">
                             <div class="layout-columns__main-inner">
+                                <h3 class="breadcrumbs-custom__title" th:if="${session.logNum==0 and(session.enrollNum==0)}" style="padding-bottom: 70px">用户 登录</h3>
+                                <h3 class="breadcrumbs-custom__title" th:if="${session.logNum==1 and(session.enrollNum==0)}" style="padding-bottom: 70px">管理员 登录</h3>
+                                <h3 class="breadcrumbs-custom__title" th:if="${session.enrollNum==1}" style="padding-bottom: 70px">用户 注册</h3>
                                 <!-- login form -->
-                                <form th:if="${session.enrollNum}==0" class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" th:action="@{/user.do?operate=login}">
+                                <form th:if="${session.enrollNum}==0" method="post" th:action="@{/user.do(operate='login',loginNum=${session.logNum})}">
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-name" type="text" name="loginId">
                                         <label class="form-label" for="contact-name">Your LoginId</label>
@@ -127,18 +132,19 @@
                                     </div>
                                     <div class="form-wrap form-button offset-2">
                                         <button class="button button-block button-primary-outline button-ujarak" type="submit">登 录</button>
-                                        <a th:if="${session.logNum==0}" class="button button-block button-primary-outline button-ujarak" th:href="|enroll()|">注 册</a>
+                                        <button th:if="${session.logNum}==0" type="button" th:onclick="enroll()" class="button button-block button-primary-outline button-ujarak">注册</button>
                                     </div>
                                 </form>
+
                                 <!-- enroll form 只有用户才可以进行注册-->
-                                <form th:if="${session.enrollNum==1 and (session.logNum==0)}" class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" th:action="@{/user.do?operate=enroll}">
+                                <form th:if="${session.enrollNum==1 and (session.logNum==0)}" method="post" th:action="@{/user.do?operate=enroll}">
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-name0" type="text" name="nickName">
                                         <label class="form-label" for="contact-name0">Your nickName</label>
                                     </div>
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-name1" type="text" name="loginId">
-                                        <label class="form-label" for="contact-name">Your LoginId</label>
+                                        <label class="form-label" for="contact-name1">Your LoginId</label>
                                     </div>
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-email1" type="password" name="password">
@@ -197,7 +203,7 @@
         <div class="shell">
             <div class="range range-sm-center">
                 <div class="cell-sm-10 cell-md-8 cell-lg-6">
-                    <!-- Brand--><a class="brand" href="index.html">
+                    <!-- Logo --><a class="brand" th:href="@{/page.do?operate=page&page=index}">
                     <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/>  <!-- Logo导航至首页 -->
                     </div><span class="brand__slogan">李金章，宼航航，Ren</span></a>
                     <ul class="list-icons list-inline-sm">
@@ -217,5 +223,6 @@
 <!-- Javascript-->
 <script src="bootstrap-fa/js/core.min.js"></script>
 <script src="bootstrap-fa/js/script.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>

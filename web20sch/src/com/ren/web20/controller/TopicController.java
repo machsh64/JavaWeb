@@ -16,7 +16,6 @@ import java.util.List;
  **/
 public class TopicController {
     private TopicService topicService;
-    private UserBasicService userBasicService;
 
     public String page(HttpSession session, String page) {
         List<Topic> allTopic = topicService.getAllTopic();
@@ -34,6 +33,7 @@ public class TopicController {
             }
         }
         session.setAttribute("indexTopic", indexTopic);
+
         return page;
     }
 }

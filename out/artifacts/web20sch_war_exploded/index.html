@@ -52,7 +52,7 @@
                 <div class="rd-navbar-panel">
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- headline logo-->
-                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
+                  <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
                       <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="446" height="75"/></div>
                     <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
                   </div>
@@ -63,10 +63,11 @@
                     <!-- 登录下拉 button-->
                     <ul class="list-icons list-inline-sm">
                       <div class="btn-group " role="group">
-                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          登  录
+                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          登 录
                           <span class="caret"></span>
                         </button>
+                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
                             <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
@@ -369,7 +370,8 @@
         <div class="shell">
           <div class="range range-sm-center">
             <div class="cell-sm-10 cell-md-8 cell-lg-6">
-              <!-- Brand--><a class="brand" href="index.html">
+              <!-- brand Logo-->
+              <a class="brand" th:href="@{/page.do?operate=page&page=index}">
                 <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/></div>
               <span class="brand__slogan">李金章，宼航航，Ren</span></a>
               <ul class="list-icons list-inline-sm">

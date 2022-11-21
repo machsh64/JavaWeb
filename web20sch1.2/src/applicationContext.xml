@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE beans [
+    <!ELEMENT beans (bean*)>
+    <!ELEMENT bean (property*)>
+    <!ELEMENT property (#PCDATA)>
+
+    <!ATTLIST bean id ID #REQUIRED>
+    <!ATTLIST bean class CDATA #IMPLIED>
+    <!ATTLIST property name CDATA #IMPLIED>
+    <!ATTLIST property ref IDREF #IMPLIED>
+]>
+
+<beans>
+    <bean id="userBasicDAO" class="com.ren.web20.dao.impl.UserBasicDAOImpl"/>
+    <bean id="topicDAO" class="com.ren.web20.dao.impl.TopicDAOImpl"/>
+    <bean id="adminBasicDAO" class="com.ren.web20.dao.impl.AdminBasicDAOImpl"/>
+
+    <bean id="topicService" class="com.ren.web20.service.impl.TopicServiceImpl">
+        <property name="topicDAO" ref="topicDAO"/>
+    </bean>
+
+    <bean id="userBasicService" class="com.ren.web20.service.impl.UserBasicServiceImpl">
+        <property name="userBasicDAO" ref="userBasicDAO"/>
+        <property name="topicService" ref="topicService"/>
+    </bean>
+
+    <bean id="adminBasicService" class="com.ren.web20.service.impl.AdminBasicServiceImpl">
+        <property name="adminBasicDAO" ref="adminBasicDAO"/>
+        <property name="topicService" ref="topicService"/>
+        <property name="userBasicService" ref="userBasicService"/>
+    </bean>
+
+    <bean id="topic" class="com.ren.web20.controller.TopicController">
+        <property name="topicService" ref="topicService"/>
+    </bean>
+
+    <bean id="user" class="com.ren.web20.controller.UserController">
+        <property name="userBasicService" ref="userBasicService"/>
+        <property name="adminBasicService" ref="adminBasicService"/>
+        <property name="topicService" ref="topicService"/>
+    </bean>
+
+    <bean id="page" class="com.ren.myssm.myspringmvc.PageController">
+        <property name="topicService" ref="topicService"/>
+    </bean>
+
+</beans>

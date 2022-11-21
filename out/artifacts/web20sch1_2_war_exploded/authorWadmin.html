@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Site Title-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" href="bootstrap-fa/images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic">
+    <link rel="stylesheet" href="bootstrap-fa/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-fa/css/style.css">
+
+    <title>Topic put</title>
+</head>
+<body>
+<!-- 页面加载动画 -->
+<div id="page-loader">
+    <div class="page-loader-body">
+        <div class="cssload-spinner">
+            <div class="cssload-cube cssload-cube0"></div>
+            <div class="cssload-cube cssload-cube1"></div>
+            <div class="cssload-cube cssload-cube2"></div>
+            <div class="cssload-cube cssload-cube3"></div>
+            <div class="cssload-cube cssload-cube4"></div>
+            <div class="cssload-cube cssload-cube5"></div>
+            <div class="cssload-cube cssload-cube6"></div>
+            <div class="cssload-cube cssload-cube7"></div>
+            <div class="cssload-cube cssload-cube8"></div>
+            <div class="cssload-cube cssload-cube9"></div>
+            <div class="cssload-cube cssload-cube10"></div>
+            <div class="cssload-cube cssload-cube11"></div>
+            <div class="cssload-cube cssload-cube12"></div>
+            <div class="cssload-cube cssload-cube13"></div>
+            <div class="cssload-cube cssload-cube14"></div>
+            <div class="cssload-cube cssload-cube15"></div>
+        </div>
+    </div>
+</div>
+<!-- Page -->
+<div class="page">
+    <!-- Page header -->
+    <header class="section page-header">
+        <!-- headline-->
+        <div class="rd-navbar-wrap">
+            <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                 data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static"
+                 data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static"
+                 data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="5px"
+                 data-lg-stick-up-offset="5px" data-md-stick-up="true" data-lg-stick-up="true">
+                <div class="rd-navbar-main-outer">
+                    <div class="rd-navbar-main">
+                        <!-- headline Panel-->
+                        <div class="rd-navbar-panel">
+                            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span>
+                            </button>
+                            <!-- headline logo-->
+                            <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                                <div class="brand__name"><img class="brand__logo-dark" src="images/logo.png" alt=""
+                                                              width="446" height="75"/></div>
+                                <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
+                            </div>
+                        </div>
+                        <!-- headline a组件-->
+                        <div class="rd-navbar-nav-wrap">
+                            <div class="rd-navbar-element">
+                                <!-- 登录下拉 button-->
+                                <ul class="list-icons list-inline-sm">
+                                    <div class="btn-group " role="group">
+                                        <button type="button" th:if="${session.author}==null"
+                                                class="button button-block button-primary-outline button-ujarak"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            登 录
+                                            <span class="caret"></span>
+                                        </button>
+                                        <input type="button" th:value="${session.author.nickName}"
+                                               th:unless="${session.author}==null"
+                                               class="button button-block button-primary-outline button-ujarak"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                                        <ul class="dropdown-menu">
+                                            <ul class="rd-navbar-nav">
+                                                <li>
+                                                    <a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a>
+                                                </li>
+                                                <br/>
+                                                <li>
+                                                    <a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                    </div>
+                                </ul>
+                            </div>
+                            <!-- headline 分页导航-->
+                            <ul class="rd-navbar-nav">
+                                <li><a th:href="@{/page.do?operate=page&page=index}">主
+                                    页<span></span><span></span><span></span><span></span></a></li>
+                                <li><a th:href="@{/page.do?operate=page&page=topicHt}">专
+                                    题<span></span><span></span><span></span><span></span></a></li>
+                                <li class="active"><a
+                                        th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a>
+                                </li>
+                                <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact
+                                    Us<span></span><span></span><span></span><span></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs-->
+    <section class="breadcrumbs-custom bg-image"
+             style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
+        <div class="shell">
+            <h1 class="breadcrumbs-custom__title" th:if="${session.author==null}" th:text="登录以进行访问">Contact 1Us</h1>
+            <h1 class="active" th:if="${session.author!=null and (session.logNum==0)}"
+                th:text="|欢迎您,用户${session.author.nickName} !|">null1</h1>
+            <h1 class="active" th:if="${session.admin!=null and (session.logNum==1)}"
+                th:text="|欢迎您,管理员${session.admin.nickName} !|">null2</h1>
+
+            <ul class="breadcrumbs-custom__path">
+                <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
+                <li class="active" th:if="${session.author==null}" th:text="专题投稿">null</li>
+                <li class="active" th:if="${session.author!=null and (session.logNum==0)}" th:text="用户稿件管理">null1</li>
+                <li class="active" th:if="${session.author!=null and (session.logNum==1)}" th:text="管理系统">null2</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 投稿页面-->
+    <section class="section section-md bg-white text-center" th:if="${session.author}!=null">
+        <div class="shell">
+            <div class="range range-md-center">
+                <div class="cell-md-11 cell-lg-10">
+                    <h2 class="text-bold">稿 件 投 送</h2>
+                    <div class="layout-columns">
+                        <div class="layout-columns__main">
+                            <div class="layout-columns__main-inner">
+                                <!-- RD Mailform-->
+                                <form class="rd-mailform" method="post"
+                                      th:action="@{/topic.do(operate='putTopic',authorId=${session.author.id})}">
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-title" type="text"
+                                               name="title"
+                                               data-constraints="@Required">
+                                        <label class="form-label" for="contact-title">专题标题（15字内）</label>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-headLine" type="text"
+                                               name="headLine"
+                                               data-constraints="@Required">
+                                        <label class="form-label" for="contact-headLine">专题简述（32字内）</label>
+                                    </div>
+                                    <div class="form-wrap">
+                                                    <textarea class="form-input" id="contact-content"
+                                                              name="content"
+                                                              data-constraints="@Required"></textarea>
+                                        <label class="form-label" for="contact-content">文章内容（5000字内）</label>
+                                    </div>
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-publish" type="text"
+                                               name="publish" data-constraints="@Required">
+                                        <label class="form-label" for="contact-publish">文章出处（10字内）</label>
+                                    </div>
+                                    <!--后端获取时间转换异常 此处为了优先注入文章 无视处理-->
+                                    <input name="localDateTime" type="hidden" value="2019-12-33 03:22:12">
+                                    <!--<div class="form-wrap">
+                                        <input class="form-input" id="contact-date" type="text" data-time-picker="datetime-local" name="localDateTime" data-constraints="@Required">
+                                        <label class="form-label" for="contact-date">日期</label>
+                                    </div>-->
+                                    <div class="form-wrap form-button offset-1">
+                                        <button class="button button-block button-primary-outline button-ujarak"
+                                                type="submit">提交稿件
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="layout-columns__aside">
+                            <div class="layout-columns__aside-item">
+                                <p class="heading-5">Ren的主页</p>
+                                <div class="divider-modern"></div>
+                                <ul class="list-inline-xs">
+                                    <li><a class="icon icon-md icon-gray-7 fa fa-github"
+                                           href="https://github.com/machsh64"></a></li>
+                                    <li><a class="icon icon-md icon-gray-7 fa fa-television"
+                                           href="https://space.bilibili.com/155564576"></a></li>
+                                    <li><a class="icon icon-md icon-gray-7 fa fa-google" href="#"></a></li>
+                                    <li><a class="icon icon-md icon-gray-7 fa  fa-qq"
+                                           href="https://wpa.qq.com/msgrd?v=3&uin=3256772458&site=qq&menu=yes"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="layout-columns__aside-item">
+                                <p class="heading-5">GitHub</p>
+                                <div class="divider-modern"></div>
+                                <div class="unit unit-horizontal unit-spacing-xxs">
+                                    <div class="unit__left"><span
+                                            class="icon icon-md icon-primary glyphicon glyphicon-user"></span>
+                                    </div>
+                                    <div class="unit__body"><a href="https://github.com/machsh64">
+                                        machshren@gmail.com</a></div>
+                                </div>
+                            </div>
+                            <div class="layout-columns__aside-item">
+                                <p class="heading-5">地 址</p>
+                                <div class="divider-modern"></div>
+                                <div class="unit unit-horizontal unit-spacing-xxs">
+                                    <div class="unit__left"><span
+                                            class="icon icon-md icon-primary material-icons-location_on"></span>
+                                    </div>
+                                    <div class="unit__body"><a
+                                            href="https://cn.bing.com/maps?osid=82e7d346-0ea7-4d46-9a4e-82b76f7d839c&cp=pqr7qysxrz9w&lvl=12&imgid=1cf2c962-754b-47b8-a999-ed9b6afcf15d&v=2&sV=2&form=S00027">BJU
+                                        宝鸡市 陕西省</a></div>
+                                </div>
+                            </div>
+                            <div class="layout-columns__aside-item">
+                                <p class="heading-5">options</p>
+                                <div class="divider-modern"></div>
+                                <div class="unit unit-horizontal unit-spacing-xxs">
+                                    <div class="unit__left"><span
+                                            class="icon icon-md icon-primary fa fa-hand-o-right"></span>
+                                    </div>
+                                    <div class="unit__body"><span>不 要 联 系 我</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic -->
+    <section class="section section-md bg-gray-lighter text-center">
+        <div class="shell">
+            <div class="range range-30">
+                <!-- 从左渐入-->
+                <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall">
+                    <!-- Post boxed-->
+                    <article class="post-boxed">
+                        <ul class="post-boxed__meta">
+                            <li>
+                                <time datetime="2019">Jul 20, 2019 time test</time>
+                            </li>
+                        </ul>
+                        <div class="post-boxed__main">
+                            <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                            <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
+                        </div>
+                        <div class="post-boxed__aside">
+                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                <div class="unit__left"><img class="post-boxed__avatar"
+                                                             src="bootstrap-fa/images/user-6-46x46.jpg" alt=""
+                                                             width="46" height="46"/>
+                                </div>
+                                <div class="unit__body">
+                                    <h6 class="text-uppercase">by Ren</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".15s">
+                    <!-- Post boxed-->
+                    <article class="post-boxed">
+                        <ul class="post-boxed__meta">
+                            <li>
+                                <time datetime="2019">Jul 15, 2019 time test</time>
+                            </li>
+                        </ul>
+                        <div class="post-boxed__main">
+                            <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                            <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
+                        </div>
+                        <div class="post-boxed__aside">
+                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                <div class="unit__left"><img class="post-boxed__avatar"
+                                                             src="bootstrap-fa/images/user-6-46x46.jpg" alt=""
+                                                             width="46" height="46"/>
+                                </div>
+                                <div class="unit__body">
+                                    <h6 class="text-uppercase">by Ren</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+                    <!-- Post boxed-->
+                    <article class="post-boxed">
+                        <ul class="post-boxed__meta">
+                            <li>
+                                <time datetime="2019">Jul 5, 2019 time test</time>
+                            </li>
+                        </ul>
+                        <div class="post-boxed__main">
+                            <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                            <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
+                        </div>
+                        <div class="post-boxed__aside">
+                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                <div class="unit__left"><img class="post-boxed__avatar"
+                                                             src="bootstrap-fa/images/user-6-46x46.jpg" alt=""
+                                                             width="46" height="46"/>
+                                </div>
+                                <div class="unit__body">
+                                    <h6 class="text-uppercase">by Ren</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+                    <!-- Post boxed-->
+                    <article class="post-boxed">
+                        <ul class="post-boxed__meta">
+                            <li>
+                                <time datetime="2019">Jul 5, 2019 time test</time>
+                            </li>
+                        </ul>
+                        <div class="post-boxed__main">
+                            <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                            <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
+                        </div>
+                        <div class="post-boxed__aside">
+                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                <div class="unit__left"><img class="post-boxed__avatar"
+                                                             src="bootstrap-fa/images/user-6-46x46.jpg" alt=""
+                                                             width="46" height="46"/>
+                                </div>
+                                <div class="unit__body">
+                                    <h6 class="text-uppercase">by Ren</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+                    <!-- Post boxed-->
+                    <article class="post-boxed">
+                        <ul class="post-boxed__meta">
+                            <li>
+                                <time datetime="2019">Jul 5, 2019 time test</time>
+                            </li>
+                        </ul>
+                        <div class="post-boxed__main">
+                            <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                            <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
+                        </div>
+                        <div class="post-boxed__aside">
+                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                <div class="unit__left"><img class="post-boxed__avatar"
+                                                             src="bootstrap-fa/images/user-6-46x46.jpg" alt=""
+                                                             width="46" height="46"/>
+                                </div>
+                                <div class="unit__body">
+                                    <h6 class="text-uppercase">by Ren</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
+                    <!-- Post boxed-->
+                    <article class="post-boxed">
+                        <ul class="post-boxed__meta">
+                            <li>
+                                <time datetime="2019">Jul 5, 2019 time test</time>
+                            </li>
+                        </ul>
+                        <div class="post-boxed__main">
+                            <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                            <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
+                        </div>
+                        <div class="post-boxed__aside">
+                            <div class="unit unit-horizontal unit-middle unit-spacing-xs">
+                                <div class="unit__left"><img class="post-boxed__avatar"
+                                                             src="bootstrap-fa/images/user-6-46x46.jpg" alt=""
+                                                             width="46" height="46"/>
+                                </div>
+                                <div class="unit__body">
+                                    <h6 class="text-uppercase">by Ren</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Footer-->
+    <footer class="footer-centered section bg-gray-darker">
+        <div class="shell">
+            <div class="range range-sm-center">
+                <div class="cell-sm-10 cell-md-8 cell-lg-6">
+                    <!-- brand Logo-->
+                    <a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                        <div class="brand__name"><img src="images/logo.png" alt="" width="237" height="35"/></div>
+                        <span class="brand__slogan">李金章，宼航航，Ren</span></a>
+                    <ul class="list-icons list-inline-sm">
+                        <li><a class="icon icon-sm fa fa-instagram icon-style-camera"
+                               href="#"><span></span><span></span><span></span><span></span></a></li>
+                        <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a>
+                        </li>
+                        <li><a class="icon icon-sm fa fa-pinterest icon-style-camera"
+                               href="#"><span></span><span></span><span></span><span></span></a></li>
+                    </ul>
+                    <!-- Rights-->
+                    <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span
+                            class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline"
+                                                                                         href="#">Privacy
+                        Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- Global Mailform Output-->
+<div class="snackbars" id="form-output-global"></div>
+<!-- Javascript-->
+<script src="bootstrap-fa/js/core.min.js"></script>
+<script src="bootstrap-fa/js/script.js"></script>
+</body>
+</html>

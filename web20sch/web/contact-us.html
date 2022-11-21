@@ -51,9 +51,9 @@
                 <!-- RD Navbar Panel-->
                 <div class="rd-navbar-panel">
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
-                      <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/><img class="brand__logo-light" src="bootstrap-fa/images/logo-inverse-237x35.png" alt="" width="237" height="35"/></div>
+                  <!-- headLine Logo -->
+                  <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                      <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/></div>
                     <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
                   </div>
                 </div>
@@ -63,10 +63,11 @@
                     <!-- 登录下拉 button-->
                     <ul class="list-icons list-inline-sm">
                       <div class="btn-group " role="group">
-                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          登  录
+                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          登 录
                           <span class="caret"></span>
                         </button>
+                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
                             <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
@@ -100,7 +101,7 @@
         <div class="shell">
           <h1 class="breadcrumbs-custom__title">Contact Us</h1>
           <ul class="breadcrumbs-custom__path">
-            <li><a href="index.html">主页</a></li>
+            <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
             <li class="active">Contact Us</li>
           </ul>
         </div>
@@ -117,7 +118,7 @@
                 <div class="layout-columns__main">
                   <div class="layout-columns__main-inner">
                     <!-- RD Mailform-->
-                    <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                    <form class="rd-mailform" method="post" action="bat/rd-mailform.php">
                       <div class="form-wrap">
                         <input class="form-input" id="contact-date" type="text" data-time-picker="date" name="date" data-constraints="@Required">
                         <label class="form-label" for="contact-date">Event Date</label>
@@ -187,7 +188,8 @@
         <div class="shell">
           <div class="range range-sm-center">
             <div class="cell-sm-10 cell-md-8 cell-lg-6">
-              <!-- Brand--><a class="brand" href="index.html">
+              <!-- beand Logo-->
+              <a class="brand" th:href="@{/page.do?operate=page&page=index}">
                 <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/>  <!-- Logo导航至首页 -->
                 </div><span class="brand__slogan">李金章，宼航航，Ren</span></a>
               <ul class="list-icons list-inline-sm">

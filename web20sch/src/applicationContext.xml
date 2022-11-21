@@ -34,7 +34,6 @@
 
     <bean id="topic" class="com.ren.web20.controller.TopicController">
         <property name="topicService" ref="topicService"/>
-        <property name="userBasicService" ref="userBasicService"/>
     </bean>
 
     <bean id="user" class="com.ren.web20.controller.UserController">

@@ -52,7 +52,7 @@
                 <div class="rd-navbar-panel">
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- headline logo-->
-                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
+                  <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
                       <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="446" height="75"/></div>
                     <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
                   </div>
@@ -63,10 +63,11 @@
                     <!-- 登录下拉 button-->
                     <ul class="list-icons list-inline-sm">
                       <div class="btn-group " role="group">
-                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          登  录
+                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          登 录
                           <span class="caret"></span>
                         </button>
+                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
                             <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
@@ -176,7 +177,7 @@
                       <div class="cell-xs-6 cell-md-3 wow fadeIn">
                         <!-- Box award-->
                         <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-1-134x98-inverse.png" alt="" width="134" height="98"/>
-                          <h3 class="box-award__title">Best photo of the year</h3>
+                          <h3 class="box-award__title">Test Test Test Test</h3>
                           <div class="box-award__divider"></div>
                           <time class="box-award__time" datetime="2010">2010</time>
                         </article>
@@ -184,7 +185,7 @@
                       <div class="cell-xs-6 cell-md-3 wow fadeIn" data-wow-delay=".1s">
                         <!-- Box award-->
                         <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-2-115x117-inverse.png" alt="" width="115" height="117"/>
-                          <h3 class="box-award__title">Best nature photo</h3>
+                          <h3 class="box-award__title">Test Test Test Test</h3>
                           <div class="box-award__divider"></div>
                           <time class="box-award__time" datetime="2014">2014</time>
                         </article>
@@ -192,7 +193,7 @@
                       <div class="cell-xs-6 cell-md-3 wow fadeIn" data-wow-delay=".2s">
                         <!-- Box award-->
                         <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-3-116x103-inverse.png" alt="" width="116" height="103"/>
-                          <h3 class="box-award__title">Best love story photo</h3>
+                          <h3 class="box-award__title">Test Test Test Test</h3>
                           <div class="box-award__divider"></div>
                           <time class="box-award__time" datetime="2015">2015</time>
                         </article>
@@ -200,7 +201,7 @@
                       <div class="cell-xs-6 cell-md-3 wow fadeIn" data-wow-delay=".3s">
                         <!-- Box award-->
                         <article class="box-award"><img class="box-award__image" src="bootstrap-fa/images/award-4-131x96-inverse.png" alt="" width="131" height="96"/>
-                          <h3 class="box-award__title">Photographer of the year</h3>
+                          <h3 class="box-award__title">Test Test Test Test</h3>
                           <div class="box-award__divider"></div>
                           <time class="box-award__time" datetime="2016">2016</time>
                         </article>
@@ -222,19 +223,19 @@
               <article class="post-boxed">
                 <ul class="post-boxed__meta">
                   <li>
-                    <time datetime="2019">Jul 20, 2019</time>
+                    <time datetime="2019">Jul 20, 2019 time test</time>
                   </li>
                 </ul>
                 <div class="post-boxed__main">
-                  <h3 class="post-boxed__title"><a href="#">Becoming a King and Queen for </a></h3>
-                  <p>For one day, the two of you are the focus of attention. The concerns of the world slip away as your...</p>
+                  <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                  <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
                 </div>
                 <div class="post-boxed__aside">
                   <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                     <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                     </div>
                     <div class="unit__body">
-                      <h6 class="text-uppercase">by Susan Parker</h6>
+                      <h6 class="text-uppercase">by Ren</h6>
                     </div>
                   </div>
                 </div>
@@ -246,19 +247,19 @@
               <article class="post-boxed">
                 <ul class="post-boxed__meta">
                   <li>
-                    <time datetime="2019">Jul 15, 2019</time>
+                    <time datetime="2019">Jul 15, 2019 time test</time>
                   </li>
                 </ul>
                 <div class="post-boxed__main">
-                  <h3 class="post-boxed__title"><a href="#">How to Make Great Wedding Photos</a></h3>
-                  <p>Today I’m going to answer the question that my clients ask almost after every photo shoot. It’s a question...</p>
+                  <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                  <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
                 </div>
                 <div class="post-boxed__aside">
                   <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                     <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                     </div>
                     <div class="unit__body">
-                      <h6 class="text-uppercase">by Susan Parker</h6>
+                      <h6 class="text-uppercase">by Ren</h6>
                     </div>
                   </div>
                 </div>
@@ -270,19 +271,19 @@
               <article class="post-boxed">
                 <ul class="post-boxed__meta">
                   <li>
-                    <time datetime="2019">Jul 5, 2019</time>
+                    <time datetime="2019">Jul 5, 2019 time test</time>
                   </li>
                 </ul>
                 <div class="post-boxed__main">
-                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
-                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                  <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                  <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
                 </div>
                 <div class="post-boxed__aside">
                   <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                     <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                     </div>
                     <div class="unit__body">
-                      <h6 class="text-uppercase">by Susan Parker</h6>
+                      <h6 class="text-uppercase">by Ren</h6>
                     </div>
                   </div>
                 </div>
@@ -294,19 +295,19 @@
               <article class="post-boxed">
                 <ul class="post-boxed__meta">
                   <li>
-                    <time datetime="2019">Jul 5, 2019</time>
+                    <time datetime="2019">Jul 5, 2019 time test</time>
                   </li>
                 </ul>
                 <div class="post-boxed__main">
-                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
-                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                  <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                  <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
                 </div>
                 <div class="post-boxed__aside">
                   <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                     <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                     </div>
                     <div class="unit__body">
-                      <h6 class="text-uppercase">by Susan Parker</h6>
+                      <h6 class="text-uppercase">by Ren</h6>
                     </div>
                   </div>
                 </div>
@@ -318,19 +319,19 @@
               <article class="post-boxed">
                 <ul class="post-boxed__meta">
                   <li>
-                    <time datetime="2019">Jul 5, 2019</time>
+                    <time datetime="2019">Jul 5, 2019 time test</time>
                   </li>
                 </ul>
                 <div class="post-boxed__main">
-                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
-                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                  <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                  <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
                 </div>
                 <div class="post-boxed__aside">
                   <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                     <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                     </div>
                     <div class="unit__body">
-                      <h6 class="text-uppercase">by Susan Parker</h6>
+                      <h6 class="text-uppercase">by Ren</h6>
                     </div>
                   </div>
                 </div>
@@ -342,19 +343,19 @@
               <article class="post-boxed">
                 <ul class="post-boxed__meta">
                   <li>
-                    <time datetime="2019">Jul 5, 2019</time>
+                    <time datetime="2019">Jul 5, 2019 time test</time>
                   </li>
                 </ul>
                 <div class="post-boxed__main">
-                  <h3 class="post-boxed__title"><a href="#">5 Most Exotic Weddings</a></h3>
-                  <p>Do you want to know where your wedding will be the most unforgettable? Read this post and you’ll find...</p>
+                  <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
+                  <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
                 </div>
                 <div class="post-boxed__aside">
                   <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                     <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                     </div>
                     <div class="unit__body">
-                      <h6 class="text-uppercase">by Susan Parker</h6>
+                      <h6 class="text-uppercase">by Ren</h6>
                     </div>
                   </div>
                 </div>
@@ -369,7 +370,8 @@
         <div class="shell">
           <div class="range range-sm-center">
             <div class="cell-sm-10 cell-md-8 cell-lg-6">
-              <!-- Brand--><a class="brand" href="index.html">
+              <!-- brand Logo-->
+              <a class="brand" th:href="@{/page.do?operate=page&page=index}">
                 <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/></div>
               <span class="brand__slogan">李金章，宼航航，Ren</span></a>
               <ul class="list-icons list-inline-sm">

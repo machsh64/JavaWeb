@@ -51,9 +51,9 @@
                 <!-- RD Navbar Panel-->
                 <div class="rd-navbar-panel">
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
-                      <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/><img class="brand__logo-light" src="images/logo-inverse-237x35.png" alt="" width="237" height="35"/></div>
+                  <!-- Logo -->
+                  <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                      <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="237" height="35"/></div>
                     <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
                   </div>
                 </div>
@@ -63,10 +63,11 @@
                     <!-- 登录下拉 button-->
                     <ul class="list-icons list-inline-sm">
                       <div class="btn-group " role="group">
-                        <button type="button" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          登  录
+                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          登 录
                           <span class="caret"></span>
                         </button>
+                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
                             <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
@@ -95,104 +96,29 @@
         </div>
       </header>
 
-      <!-- Breadcrumbs-->
+      <!-- 页眉 -->
       <section class="breadcrumbs-custom bg-image" style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
         <div class="shell">
           <h1 class="breadcrumbs-custom__title">专  题</h1>
           <ul class="breadcrumbs-custom__path">
-            <li><a href="index.html">主页</a></li>
+            <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
             <li class="active">专题</li>
           </ul>
         </div>
       </section>
 
-      <!-- About Me-->
-      <section class="section section-md bg-white">
-        <div class="shell">
-          <div class="range range-50 range-sm-center range-md-left">
-            <div class="cell-sm-6 cell-md-5">
-              <div class="thumb-bordered"><img src="bootstrap-fa/images/about-1-437x435.jpg" alt="" width="437" height="435"/>
-              </div>
-            </div>
-            <div class="cell-sm-6 cell-md-7">
-              <div class="box-width-3 box-centered">
-                <article class="quote-big">
-                  <p class="q">I’ve been working as a professional wedding photographer all my adult life.</p>
-                </article>
-                <div class="divider"></div>
-                <p class="text-spacing-05">My name is Susan Parker, and I have been a professional wedding photographer since 2005. On this website you can take a look at my latest photos or order a photo session for yourself or your family.</p>
-                <div class="group-3-columns" data-lightgallery="group">
-                  <div class="column-item"><a class="thumb-light" href="bootstrap-fa/images/certificate-1-847x1200.jpg" data-lightgallery="item"><img src="bootstrap-fa/images/certificate-1-120x171.jpg" alt="" width="120" height="171"/>
-                      <div class="thumb-light__overlay"></div></a></div>
-                  <div class="column-item"><a class="thumb-light" href="bootstrap-fa/images/certificate-1-847x1200.jpg" data-lightgallery="item"><img src="bootstrap-fa/images/certificate-1-120x171.jpg" alt="" width="120" height="171"/>
-                      <div class="thumb-light__overlay"></div></a></div>
-                  <div class="column-item"><a class="thumb-light" href="bootstrap-fa/images/certificate-1-847x1200.jpg" data-lightgallery="item"><img src="bootstrap-fa/images/certificate-1-120x171.jpg" alt="" width="120" height="171"/>
-                      <div class="thumb-light__overlay"></div></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- My Best Photos-->
-      <section class="section section-sm bg-gray-lighter text-center"> 
-        <div class="shell">
-          <div class="range range-50 range-sm-center">
-            <div class="cell-md-10 cell-lg-9">
-              <h1>My Best Photos</h1>
-              <p>In my portfolio, there are hundreds of successful photo shoots and dozens of satisfied customers. All of the couples I’ve been working with were more than satisfied with my works. Check out the gallery to learn more about my skills and style.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Owl Carousel-->
-        <div class="owl-carousel-wrap owl-carousel_style-2">
-          <div class="owl-carousel" data-items="1" data-lg-items="3" data-autoplay="true" data-xl-items="3" data-dots="false" data-nav="false" data-stage-padding="0" data-xs-stage-padding="90" data-sm-stage-padding="140" data-md-stage-padding="260" data-lg-stage-padding="1" data-loop="true" data-margin="0" data-mouse-drag="false" data-nav-custom="#owl-carousel-nav" data-center-mode="true" data-speed="500" data-lightgallery="group"><a class="thumb-ruby thumb-mixed_large" href="images/group-image-1-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ruby__image" src="images/about-2-649x427.jpg" alt="" width="649" height="427"/>
-              <div class="thumb-ruby__caption"> 
-                <p class="thumb-ruby__title heading-3">Image #1</p>
-                <p class="thumb-ruby__text">If you are looking for high quality wedding photography, I will be glad to help you.</p>
-              </div></a><a class="thumb-ruby thumb-mixed_large" href="bootstrap-fa/images/group-image-2-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ruby__image" src="bootstrap-fa/images/about-3-649x427.jpg" alt="" width="649" height="427"/>
-              <div class="thumb-ruby__caption"> 
-                <p class="thumb-ruby__title heading-3">Image #2</p>
-                <p class="thumb-ruby__text">If you are looking for high quality wedding photography, I will be glad to help you.</p>
-              </div></a><a class="thumb-ruby thumb-mixed_large" href="bootstrap-fa/images/group-image-3-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ruby__image" src="bootstrap-fa/images/about-4-649x427.jpg" alt="" width="649" height="427"/>
-              <div class="thumb-ruby__caption"> 
-                <p class="thumb-ruby__title heading-3">Image #3</p>
-                <p class="thumb-ruby__text">If you are looking for high quality wedding photography, I will be glad to help you.</p>
-              </div></a>
-          </div>
-          <div class="owl-outer-navigation" id="owl-carousel-nav">
-            <button class="owl-arrow owl-arrow-prev">
-              <svg x="0px" y="0px" viewbox="0 0 28.5 16" width="26" height="14">
-                <line x1="27.5" y1="8" x2="1" y2="8" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></line>
-                <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="8.8,15 1,8 8.8,1"></polyline>
-              </svg>
-            </button>
-            <button class="owl-arrow owl-arrow-next">
-              <svg x="0px" y="0px" viewbox="0 0 28.5 16" width="26" height="14">
-                <line fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="8" x2="27.5" y2="8"></line>
-                <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="19.7,15 27.5,8 19.7,1"></polyline>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- What People Say-->
+      <!-- 所有文章概览 -->
       <section class="section section-md bg-white text-center">
         <div class="shell">
-          <h1>What People Say</h1>
-          <p><span>Need more feedback? </span><a href="#">Click Here!</a></p>
+          <h1>想了解更多？ 看看这儿</h1>
           <div class="range range-50 range-sm-center">
-            <div class="cell-sm-9 cell-md-6">
+            <div class="cell-sm-9 cell-md-6" th:each="topic : ${session.topicList}">
                     <!-- Quote boxed-->
                     <article class="quote-boxed"><span></span><span></span><span></span><span></span>
-                      <p class="quote-boxed__title">The Best Photographer I Know</p>
+                      <p class="quote-boxed__title" th:value="${topic.title}">The Best Photographer I Know</p>
                       <div class="quote-boxed__text">
-                        <svg class="quote-boxed__shape" version="1.1" x="0px" y="0px" viewbox="0 0 32.2 28" width="32.2" height="28">
-                          <path d="M6.2,0C2.8,0,0,2.8,0,6.3s2.8,6.3,6.2,6.3c6.2,0,2.1,12.3-6.2,12.3v3C14.7,27.9,20.4,0,6.2,0L6.2,0z M23.9,0       c-3.4,0-6.2,2.8-6.2,6.3s2.8,6.3,6.2,6.3c6.2,0,2.1,12.3-6.2,12.3v3C32.4,27.9,38.2,0,23.9,0L23.9,0z M23.9,0"></path>
-                        </svg>
-                        <p>I have been working with you for a long time and I can easily say that you are the best family photographer. Thank you for the high quality of your work!</p>
+
+                        <p th:value="${topic.headLine}">I have been working with you for a long time and I can easily say that you are the best family photographer. Thank you for the high quality of your work!</p>
                       </div>
                       <ul class="quote-boxed__meta">
                         <li>
@@ -200,12 +126,12 @@
                             <div class="unit__left"><img class="quote-boxed__avatar" src="bootstrap-fa/images/user-1-46x46.jpg" alt="" width="46" height="46"/>
                             </div>
                             <div class="unit__body">
-                              <cite class="quote-boxed__cite">Rebecca Smith</cite>
+                              <cite class="quote-boxed__cite" th:value="${topic.publish}">Rebecca Smith</cite>
                             </div>
                           </div>
                         </li>
                         <li>
-                          <time class="quote-boxed__time" datetime="2019">Jul 20, 2019</time>
+                          <time class="quote-boxed__time" >Jul 20, 2019</time>
                         </li>
                       </ul>
                     </article>
@@ -240,59 +166,13 @@
         </div>
       </section>
 
-            <section class="section parallax-container bg-image-dark" data-parallax-img="bootstrap-fa/images/bg-image-6-1920x1225.jpg">
-              <div class="parallax-content">
-                <section class="section-lg text-center">
-                  <div class="shell">
-                    <div class="range range-50 range-sm-center range-md-reverse range-md-middle">
-                      <div class="cell-md-6 cell-lg-5">
-                        <div class="box-width-4 box-centered">
-                          <p class="heading-1">Book Your <br> Photo Shoot </p>
-                          <div class="divider-small"></div>
-                          <p>To order a photo shoot, please share as many details about your particular wedding as possible. I will be giving you my feedback immediately after I receive your message!</p>
-                        </div>
-                      </div>
-                      <div class="cell-sm-10 cell-md-6 cell-lg-7">
-                        <article class="box-bordered">
-                          <div class="box-bordered__main">
-                            <!-- RD Mailform-->
-                            <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
-                              <div class="form-wrap">
-                                <input class="form-input" id="contact-date" type="text" data-time-picker="date" name="date" data-constraints="@Required">
-                                <label class="form-label" for="contact-date">Event Date</label>
-                              </div>
-                              <div class="form-wrap">
-                                <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
-                                <label class="form-label" for="contact-name">Your Name</label>
-                              </div>
-                              <div class="form-wrap">
-                                <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
-                                <label class="form-label" for="contact-email">E-mail</label>
-                              </div>
-                              <div class="form-wrap">
-                                <label class="form-label" for="contact-message">Your Message</label>
-                                <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
-                              </div>
-                              <div class="form-wrap form-button offset-1">
-                                <button class="button button-block button-primary-outline button-ujarak" type="submit">make an appointment</button>
-                              </div>
-                            </form>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </section>
-
-
       <!-- Page Footer -->
       <footer class="footer-centered section bg-gray-darker">
         <div class="shell">
           <div class="range range-sm-center">
             <div class="cell-sm-10 cell-md-8 cell-lg-6">
-              <!-- Brand--><a class="brand" href="index.html">
+              <!-- brand Logo-->
+              <a class="brand" th:href="@{/page.do?operate=page&page=index}">
                 <div class="brand__name"><img src="img/logo.png" alt="" width="210" height="75"/>
                 </div><span class="brand__slogan">李金章，宼航航，Ren</span></a>
               <ul class="list-icons list-inline-sm">

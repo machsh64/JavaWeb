@@ -58,9 +58,8 @@
                             <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span>
                             </button>
                             <!-- headline logo-->
-                            <div class="rd-navbar-brand"><a class="brand" href="index.html">
-                                <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt=""
-                                                              width="446" height="75"/></div>
+                            <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                                <div class="brand__name"><img class="brand__logo-dark" src="img/logo.png" alt="" width="446" height="75"/></div>
                                 <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
                             </div>
                         </div>
@@ -70,21 +69,15 @@
                                 <!-- 登录下拉 button-->
                                 <ul class="list-icons list-inline-sm">
                                     <div class="btn-group " role="group">
-                                        <button type="button"
-                                                class="button button-block button-primary-outline button-ujarak"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             登 录
                                             <span class="caret"></span>
                                         </button>
+                                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                                         <ul class="dropdown-menu">
                                             <ul class="rd-navbar-nav">
-                                                <li>
-                                                    <a th:href="@{page.do?operate=login&logNum=0&enroll=0}">作者登录<span></span><span></span><span></span><span></span></a>
-                                                </li>
-                                                <br/>
-                                                <li>
-                                                    <a th:href="@{page.do?operate=login&logNum=1&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a>
-                                                </li>
+                                                <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
+                                                <li><a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a></li>
                                             </ul>
                                         </ul>
                                     </div>
@@ -94,8 +87,6 @@
                             <ul class="rd-navbar-nav">
                                 <li><a th:href="@{/page.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a></li>
                                 <li><a th:href="@{/page.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a></li>
-                                <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
-                                <!--th:if="${session.loginId}!="-->
                                 <li  class="active"><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
                                 <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a></li>
                             </ul>
@@ -110,13 +101,13 @@
     <section class="breadcrumbs-custom bg-image" style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
         <div class="shell">
             <h1 class="breadcrumbs-custom__title" th:if="${session.author==null}" th:text="登录以进行访问">Contact 1Us</h1>
-            <li class="active" th:if="${session.author!=null and (session.logNum==0)}" th:text="|欢迎您,用户${session.author.nickName} !|">null1</li>
-            <li class="active" th:if="${session.author!=null and (session.logNum==1)}" th:text="|欢迎您,管理员${session.admin.nickName} !|">null2</li>
+            <h1 class="active" th:if="${session.author!=null and (session.logNum==0)}" th:text="|欢迎您,用户${session.author.nickName} !|">null1</h1>
+            <h1 class="active" th:if="${session.admin!=null and (session.logNum==1)}" th:text="|欢迎您,管理员${session.admin.nickName} !|">null2</h1>
 
             <ul class="breadcrumbs-custom__path">
-                <li><a href="index.html">主页</a></li>
+                <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
                 <li class="active" th:if="${session.author==null}" th:text="专题投稿">null</li>
-                <li class="active" th:if="${session.author!=null and (session.logNum==0)}"th:text="用户稿件管理">null1</li>
+                <li class="active" th:if="${session.author!=null and (session.logNum==0)}" th:text="用户稿件管理">null1</li>
                 <li class="active" th:if="${session.author!=null and (session.logNum==1)}" th:text="管理系统">null2</li>
             </ul>
         </div>
@@ -298,7 +289,8 @@
         <div class="shell">
             <div class="range range-sm-center">
                 <div class="cell-sm-10 cell-md-8 cell-lg-6">
-                    <!-- Brand--><a class="brand" href="index.html">
+                    <!-- brand Logo-->
+                    <a class="brand" th:href="@{/page.do?operate=page&page=index}">
                     <div class="brand__name"><img src="img/logo.png" alt="" width="237" height="35"/></div>
                     <span class="brand__slogan">李金章，宼航航，Ren</span></a>
                     <ul class="list-icons list-inline-sm">
@@ -311,9 +303,7 @@
                     </ul>
                     <!-- Rights-->
                     <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span
-                            class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline"
-                                                                                         href="#">Privacy
-                        Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+                            class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
                 </div>
             </div>
         </div>
