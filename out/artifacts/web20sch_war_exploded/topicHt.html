@@ -69,8 +69,8 @@
                         </button>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
-                            <li><a href="#">作者登录<span></span><span></span><span></span><span></span></a></li><br/>
-                            <li><a href="#">用户登录<span></span><span></span><span></span><span></span></a></li>
+                            <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
+                            <li><a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a></li>
                           </ul>
                         </ul>
                       </div>
@@ -84,7 +84,7 @@
                     </li>
                     <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
                     <!--th:if="${session.loginId}!="-->
-                    <li><a th:href="@{/topic.do?operate=authorWadmin&}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                    <li><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
                     <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
                     </li>
                   </ul>
@@ -98,10 +98,10 @@
       <!-- Breadcrumbs-->
       <section class="breadcrumbs-custom bg-image" style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
         <div class="shell">
-          <h1 class="breadcrumbs-custom__title">日  志</h1>
+          <h1 class="breadcrumbs-custom__title">专  题</h1>
           <ul class="breadcrumbs-custom__path">
             <li><a href="index.html">主页</a></li>
-            <li class="active">日志</li>
+            <li class="active">专题</li>
           </ul>
         </div>
       </section>
@@ -301,7 +301,7 @@
                 <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
               </ul>
               <!-- Rights-->
-              <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+              <p class="rights"><a href="https://bjwlxy.cn/"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span></a><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
             </div>
           </div>
         </div>

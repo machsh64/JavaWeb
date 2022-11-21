@@ -69,8 +69,8 @@
                         </button>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
-                            <li><a href="#">作者登录<span></span><span></span><span></span><span></span></a></li><br/>
-                            <li><a href="#">用户登录<span></span><span></span><span></span><span></span></a></li>
+                            <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
+                            <li><a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a></li>
                           </ul>
                         </ul>
                       </div>
@@ -84,7 +84,7 @@
                     </li>
                     <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
                     <!--th:if="${session.loginId}!="-->
-                    <li><a th:href="@{/topic.do?operate=authorWadmin&}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                    <li><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
                     <li class="active"><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
                     </li>
                   </ul>
@@ -164,7 +164,7 @@
                     <div class="divider-modern"></div>
                     <div class="unit unit-horizontal unit-spacing-xxs">
                       <div class="unit__left"><span class="icon icon-md icon-primary material-icons-location_on"></span></div>
-                      <div class="unit__body"><a href="#">BJU 宝鸡市 陕西省</a></div>
+                      <div class="unit__body"><a href="https://cn.bing.com/maps?osid=82e7d346-0ea7-4d46-9a4e-82b76f7d839c&cp=pqr7qysxrz9w&lvl=12&imgid=1cf2c962-754b-47b8-a999-ed9b6afcf15d&v=2&sV=2&form=S00027">BJU 宝鸡市 陕西省</a></div>
                     </div>
                   </div>
                   <div class="layout-columns__aside-item">
@@ -196,7 +196,7 @@
                 <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
               </ul>
               <!-- Rights-->
-              <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+              <p class="rights"><a href="https://bjwlxy.cn/"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span></a><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
             </div>
           </div>
         </div>

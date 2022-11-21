@@ -69,8 +69,8 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <ul class="rd-navbar-nav">
-                                                <li><a href="#">作者登录<span></span><span></span><span></span><span></span></a></li><br/>
-                                                <li><a href="#">用户登录<span></span><span></span><span></span><span></span></a></li>
+                                                <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
+                                                <li><a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a></li>
                                             </ul>
                                         </ul>
                                     </div>
@@ -84,8 +84,8 @@
                                 </li>
                                 <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
                                 <!--th:if="${session.loginId}!="-->
-                                <li><a th:href="@{/topic.do?operate=authorWadmin&}">专题投稿<span></span><span></span><span></span><span></span></a></li>
-                                <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
+                                <li><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                                <li><a th:href="@{/page.do(operate='page',page='contact-us')}">Contact Us<span></span><span></span><span></span><span></span></a>
                                 </li>
                             </ul>
                         </div>
@@ -96,12 +96,13 @@
     </header>
 
     <!-- Breadcrumbs-->
-    <section class="breadcrumbs-custom bg-image" style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
+    <section class="breadcrumbs-custom bg-image" style="background-image: url(img/loginbg.png);"> <!-- 1920 301 -->
         <div class="shell">
-            <h1 class="breadcrumbs-custom__title">Contact Us</h1>
+            <h1 class="breadcrumbs-custom__title" th:if="${session.logNum}==0">用户 登录</h1>
+            <h1 class="breadcrumbs-custom__title" th:if="${session.logNum}==1">管理员 登录</h1>
             <ul class="breadcrumbs-custom__path">
                 <li><a href="index.html">主页</a></li>
-                <li class="active">Contact Us</li>
+                <li class="active">登录</li>
             </ul>
         </div>
     </section>
@@ -111,31 +112,40 @@
         <div class="shell">
             <div class="range range-md-center">
                 <div class="cell-md-11 cell-lg-10">
-                    <h2 class="text-bold">Get in Touch</h2>
-                    <p><span class="box-width-2">We are available 24/7 by fax, e-mail or by phone. You can also use our quick contact form to ask a question about our services and projects.</span></p>
                     <div class="layout-columns">
                         <div class="layout-columns__main">
                             <div class="layout-columns__main-inner">
-                                <!-- RD Mailform-->
-                                <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                                <!-- login form -->
+                                <form th:if="${session.enrollNum}==0" class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" th:action="@{/user.do?operate=login}">
                                     <div class="form-wrap">
-                                        <input class="form-input" id="contact-date" type="text" data-time-picker="date" name="date" data-constraints="@Required">
-                                        <label class="form-label" for="contact-date">Event Date</label>
+                                        <input class="form-input" id="contact-name" type="text" name="loginId">
+                                        <label class="form-label" for="contact-name">Your LoginId</label>
                                     </div>
                                     <div class="form-wrap">
-                                        <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
-                                        <label class="form-label" for="contact-name">Your Name</label>
+                                        <input class="form-input" id="contact-email" type="password" name="password">
+                                        <label class="form-label" for="contact-email">Password</label>
+                                    </div>
+                                    <div class="form-wrap form-button offset-2">
+                                        <button class="button button-block button-primary-outline button-ujarak" type="submit">登 录</button>
+                                        <a th:if="${session.logNum==0}" class="button button-block button-primary-outline button-ujarak" th:href="|enroll()|">注 册</a>
+                                    </div>
+                                </form>
+                                <!-- enroll form 只有用户才可以进行注册-->
+                                <form th:if="${session.enrollNum==1 and (session.logNum==0)}" class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" th:action="@{/user.do?operate=enroll}">
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-name0" type="text" name="nickName">
+                                        <label class="form-label" for="contact-name0">Your nickName</label>
                                     </div>
                                     <div class="form-wrap">
-                                        <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
-                                        <label class="form-label" for="contact-email">E-mail</label>
+                                        <input class="form-input" id="contact-name1" type="text" name="loginId">
+                                        <label class="form-label" for="contact-name">Your LoginId</label>
                                     </div>
                                     <div class="form-wrap">
-                                        <label class="form-label" for="contact-message">Your Message</label>
-                                        <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                                        <input class="form-input" id="contact-email1" type="password" name="password">
+                                        <label class="form-label" for="contact-email1">Password</label>
                                     </div>
-                                    <div class="form-wrap form-button offset-1">
-                                        <button class="button button-block button-primary-outline button-ujarak" type="submit">make an appointment</button>
+                                    <div class="form-wrap form-button offset-2">
+                                        <button class="button button-block button-primary-outline button-ujarak" type="submit">确认 注册</button>
                                     </div>
                                 </form>
                             </div>
@@ -196,7 +206,7 @@
                         <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
                     </ul>
                     <!-- Rights-->
-                    <p class="rights"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+                    <p class="rights"><a href="https://bjwlxy.cn/"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span></a><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
                 </div>
             </div>
         </div>
