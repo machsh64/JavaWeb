@@ -1,9 +1,9 @@
 package com.ren.web20.service.impl;
 
+import com.ren.myssm.util.TopicUtil;
 import com.ren.web20.dao.TopicDAO;
 import com.ren.web20.pojo.Topic;
 import com.ren.web20.service.TopicService;
-import com.ren.web20.service.UserBasicService;
 
 import java.util.List;
 
@@ -17,19 +17,30 @@ public class TopicServiceImpl implements TopicService {
 
     private TopicDAO topicDAO;
 
+    @Override
+    public Topic getTopicById(int topicId){
+        return topicDAO.getTopicById(topicId);
+    }
 
     @Override
     public List<Topic> getTopicListByAuthorId(int authorId) {
-        return topicDAO.getTopicList(authorId);
+        List<Topic> topicList = topicDAO.getTopicList(authorId);
+        return TopicUtil.getTopicTimeWCount(topicList);
     }
 
     @Override
     public List<Topic> getAllTopic() {
-        return topicDAO.getAllTopic();
+        List<Topic> allTopic = topicDAO.getAllTopic();
+        return TopicUtil.getTopicTimeWCount(allTopic);
     }
 
     @Override
     public int addTopic(Topic topic){
         return topicDAO.addTopic(topic);
+    }
+
+    @Override
+    public int delTopicById(int topicId){
+        return topicDAO.delTopicById(topicId);
     }
 }

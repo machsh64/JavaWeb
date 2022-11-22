@@ -27,8 +27,10 @@ public class UserBasicServiceImpl implements UserBasicService {
     @Override
     public Author login(String loginId, String password) {
         Author author = userBasicDAO.login(loginId, password);
-        List<Topic> authorTopicList = topicService.getTopicListByAuthorId(author.getId());
-        author.setTopicList(authorTopicList);
+        if (author != null) {
+            List<Topic> authorTopicList = topicService.getTopicListByAuthorId(author.getId());
+            author.setTopicList(authorTopicList);
+        }
         return author;
     }
 

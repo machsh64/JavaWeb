@@ -14,6 +14,7 @@ public class Topic {
     private String headLine;
     private String content;
     private LocalDateTime topicDateTime;
+    private String topicTime;
     private String publish;  //出版社
     private int count;  //topic的行数
     private int authorId;
@@ -69,6 +70,14 @@ public class Topic {
 
     public void setTopicDateTime(LocalDateTime topicDateTime) {
         this.topicDateTime = topicDateTime;
+    }
+
+    public String getTopicTime() {
+        return topicTime;
+    }
+
+    public void setTopicTime(String topicTime) {
+        this.topicTime = topicTime;
     }
 
     public String getPublish() {

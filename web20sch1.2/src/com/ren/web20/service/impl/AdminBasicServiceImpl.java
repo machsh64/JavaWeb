@@ -25,10 +25,12 @@ public class AdminBasicServiceImpl implements AdminBasicService {
     @Override
     public Admin login(String loginId, String password) {
         Admin admin = adminBasicDAO.ADMINLogin(loginId, password);
-        List<Topic> allTopic = topicService.getAllTopic();
-        List<Author> allUser = userBasicService.getAllUser();
-        admin.setTopicList(allTopic);
-        admin.setAuthorList(allUser);
+        if (admin != null) {
+            List<Topic> allTopic = topicService.getAllTopic();
+            List<Author> allUser = userBasicService.getAllUser();
+            admin.setTopicList(allTopic);
+            admin.setAuthorList(allUser);
+        }
         return admin;
     }
 }

@@ -79,13 +79,13 @@
                             </div>
                             <!-- RD Navbar Nav-->
                             <ul class="rd-navbar-nav">
-                                <li><a th:href="@{/page.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
+                                <li><a th:href="@{/topic.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
                                 </li>
-                                <li><a th:href="@{/page.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a>
+                                <li><a th:href="@{/topic.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a>
                                 </li>
                                 <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
                                 <!--th:if="${session.loginId}!="-->
-                                <li><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                                <li><a th:href="@{/topic.do(operate='JumpCrash')}">专题投稿<span></span><span></span><span></span><span></span></a></li>
                                 <li><a th:href="@{/page.do(operate='page',page='contact-us')}">Contact Us<span></span><span></span><span></span><span></span></a>
                                 </li>
                             </ul>

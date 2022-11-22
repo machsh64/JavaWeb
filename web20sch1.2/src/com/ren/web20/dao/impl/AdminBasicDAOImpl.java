@@ -14,7 +14,8 @@ public class AdminBasicDAOImpl extends BaseDAO<Admin> implements AdminBasicDAO {
     @Override
     public Admin ADMINLogin(String loginId, String password) {
         String sql = "SELECT id,nickName,loginId,password " +
-                "FROM w_admin";
-        return executeQuery(sql);
+                "FROM w_admin " +
+                "WHERE loginId=? AND password=?";
+        return executeQuery(sql,loginId,password);
     }
 }

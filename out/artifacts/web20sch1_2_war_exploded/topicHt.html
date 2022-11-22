@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <!-- Site Title-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
@@ -9,163 +9,200 @@
 
     <link rel="icon" href="bootstrap-fa/images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic">
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic">
     <link rel="stylesheet" href="bootstrap-fa/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap-fa/css/style.css">
 
     <title>Topic</title>
-  </head>
-  <body>
-    <!-- Page Loader-->
-    <div id="page-loader">
-      <div class="page-loader-body">
+</head>
+<body>
+<!-- Page Loader-->
+<div id="page-loader">
+    <div class="page-loader-body">
         <div class="cssload-spinner">
-          <div class="cssload-cube cssload-cube0"></div>
-          <div class="cssload-cube cssload-cube1"></div>
-          <div class="cssload-cube cssload-cube2"></div>
-          <div class="cssload-cube cssload-cube3"></div>
-          <div class="cssload-cube cssload-cube4"></div>
-          <div class="cssload-cube cssload-cube5"></div>
-          <div class="cssload-cube cssload-cube6"> </div>
-          <div class="cssload-cube cssload-cube7"></div>
-          <div class="cssload-cube cssload-cube8"></div>
-          <div class="cssload-cube cssload-cube9"></div>
-          <div class="cssload-cube cssload-cube10"></div>
-          <div class="cssload-cube cssload-cube11"></div>
-          <div class="cssload-cube cssload-cube12"></div>
-          <div class="cssload-cube cssload-cube13"></div>
-          <div class="cssload-cube cssload-cube14"></div>
-          <div class="cssload-cube cssload-cube15"></div>
+            <div class="cssload-cube cssload-cube0"></div>
+            <div class="cssload-cube cssload-cube1"></div>
+            <div class="cssload-cube cssload-cube2"></div>
+            <div class="cssload-cube cssload-cube3"></div>
+            <div class="cssload-cube cssload-cube4"></div>
+            <div class="cssload-cube cssload-cube5"></div>
+            <div class="cssload-cube cssload-cube6"></div>
+            <div class="cssload-cube cssload-cube7"></div>
+            <div class="cssload-cube cssload-cube8"></div>
+            <div class="cssload-cube cssload-cube9"></div>
+            <div class="cssload-cube cssload-cube10"></div>
+            <div class="cssload-cube cssload-cube11"></div>
+            <div class="cssload-cube cssload-cube12"></div>
+            <div class="cssload-cube cssload-cube13"></div>
+            <div class="cssload-cube cssload-cube14"></div>
+            <div class="cssload-cube cssload-cube15"></div>
         </div>
-      </div>
     </div>
-    <!-- Page-->
-    <div class="page">
-      <!-- Page Header-->
-      <header class="section page-header">
+</div>
+<!-- Page-->
+<div class="page">
+    <!-- Page Header-->
+    <header class="section page-header">
         <!-- RD Navbar-->
         <div class="rd-navbar-wrap">
-          <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="5px" data-lg-stick-up-offset="5px" data-md-stick-up="true" data-lg-stick-up="true">
-            <div class="rd-navbar-main-outer">
-              <div class="rd-navbar-main">
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                  <!-- Logo -->
-                  <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
-                      <div class="brand__name"><img class="brand__logo-dark" src="images/logo.png" alt="" width="237" height="35"/></div>
-                    <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
-                  </div>
+            <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                 data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static"
+                 data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static"
+                 data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-md-stick-up-offset="5px"
+                 data-lg-stick-up-offset="5px" data-md-stick-up="true" data-lg-stick-up="true">
+                <div class="rd-navbar-main-outer">
+                    <div class="rd-navbar-main">
+                        <!-- RD Navbar Panel-->
+                        <div class="rd-navbar-panel">
+                            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span>
+                            </button>
+                            <!-- Logo -->
+                            <div class="rd-navbar-brand"><a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                                <div class="brand__name"><img class="brand__logo-dark" src="images/logo.png" alt=""
+                                                              width="237" height="35"/></div>
+                                <span class="brand__slogan">喜迎20大  永远跟党走</span></a>
+                            </div>
+                        </div>
+                        <!-- headline a组件-->
+                        <div class="rd-navbar-nav-wrap">
+                            <div class="rd-navbar-element">
+                                <!-- 登录下拉 button-->
+                                <ul class="list-icons list-inline-sm">
+                                    <div class="btn-group " role="group">
+                                        <button type="button" th:if="${session.author}==null"
+                                                class="button button-block button-primary-outline button-ujarak"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            登 录
+                                            <span class="caret"></span>
+                                        </button>
+                                        <input type="button" th:value="${session.author.nickName}"
+                                               th:unless="${session.author}==null"
+                                               class="button button-block button-primary-outline button-ujarak"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                                        <ul class="dropdown-menu">
+                                            <ul class="rd-navbar-nav">
+                                                <li>
+                                                    <a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a>
+                                                </li>
+                                                <br/>
+                                                <li>
+                                                    <a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                    </div>
+                                </ul>
+                            </div>
+                            <!-- RD Navbar Nav-->
+                            <ul class="rd-navbar-nav">
+                                <li><a th:href="@{/topic.do?operate=page&page=index}">主
+                                    页<span></span><span></span><span></span><span></span></a>
+                                </li>
+                                <li class="active"><a th:href="@{/topic.do?operate=page&page=topicHt}">专
+                                    题<span></span><span></span><span></span><span></span></a>
+                                </li>
+                                <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
+                                <!--th:if="${session.loginId}!="-->
+                                <li>
+                                    <a th:href="@{/topic.do(operate='JumpCrash')}">专题投稿<span></span><span></span><span></span><span></span></a>
+                                </li>
+                                <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact
+                                    Us<span></span><span></span><span></span><span></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <!-- headline a组件-->
-                <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-element">
-                    <!-- 登录下拉 button-->
-                    <ul class="list-icons list-inline-sm">
-                      <div class="btn-group " role="group">
-                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          登 录
-                          <span class="caret"></span>
-                        </button>
-                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
-                        <ul class="dropdown-menu">
-                          <ul class="rd-navbar-nav">
-                            <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
-                            <li><a th:href="@{page.do?operate=login&logNum=1&enroll=0}">管理登录<span></span><span></span><span></span><span></span></a></li>
-                          </ul>
-                        </ul>
-                      </div>
-                    </ul>
-                  </div>
-                  <!-- RD Navbar Nav-->
-                  <ul class="rd-navbar-nav">
-                    <li><a th:href="@{/page.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
-                    </li>
-                    <li class="active"><a th:href="@{/page.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a>
-                    </li>
-                    <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
-                    <!--th:if="${session.loginId}!="-->
-                    <li><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
-                    <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </nav>
+            </nav>
         </div>
-      </header>
+    </header>
 
-      <!-- 页眉 -->
-      <section class="breadcrumbs-custom bg-image" style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
+    <!-- 页眉 -->
+    <section class="breadcrumbs-custom bg-image"
+             style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
         <div class="shell">
-          <h1 class="breadcrumbs-custom__title">专  题</h1>
-          <ul class="breadcrumbs-custom__path">
-            <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
-            <li class="active">专题</li>
-          </ul>
+            <h1 class="breadcrumbs-custom__title">专 题</h1>
+            <ul class="breadcrumbs-custom__path">
+                <li><a th:href="@{/page.do?operate=page&page=index}">主页</a></li>
+                <li class="active">专题</li>
+            </ul>
         </div>
-      </section>
+    </section>
 
-      <!-- 所有文章概览 -->
-      <section class="section section-md bg-white text-center">
+    <!-- 所有文章概览 -->
+    <section class="section section-md bg-gray-darker text-center">
         <div class="shell">
-          <h1>想了解更多？ 看看这儿</h1>
-          <div class="range range-50 range-sm-center" >
+            <h1>想了解更多？ 看看这儿</h1>
+            <div class="range range-50 range-sm-center" th:href="|TopicShow(${session.topicList})|">
 
-            <div class="cell-sm-9 cell-md-6 wow fadeInLeftSmall" data-wow-delay=".3s" th:each="topic : ${session.topicList}">
+                <div class="cell-sm-9 cell-md-6 wow fadeInLeftSmall" data-wow-delay=".3s"
+                     th:each="topic : ${session.topicList}">
                     <!-- Quote boxed-->
                     <article class="quote-boxed"><span></span><span></span><span></span><span></span>
-                      <p class="quote-boxed__title" th:value="${topic.title}">title test test test</p>
-                      <div class="quote-boxed__text">
-                        <p th:value="${topic.headLine}">headLine test test test test test test test test test test test test test test test test</p>
-                      </div>
-                      <ul class="quote-boxed__meta">
-                        <li>
-                          <div class="unit unit-horizontal unit-middle">
-                            <div class="unit__left"><img class="quote-boxed__avatar" src="bootstrap-fa/images/user-1-46x46.jpg" alt="" width="46" height="46"/>
-                            </div>
-                            <div class="unit__body">
-                              <cite class="quote-boxed__cite" th:value="${topic.publish}">Publish Test</cite>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <time class="quote-boxed__time" >Jul 20, 2019 time test</time>
-                        </li>
-                      </ul>
+                        <p class="quote-boxed__title" th:text="${topic.title}">title test test test</p>
+                        <div class="quote-boxed__text">
+                            <p class="tp_headLine" th:text="${topic.headLine}" th:onmouseover="|tpMouseOn(${topic.count+1})|" style="color: #3a3a3a">headLine test test test test test test test test test test
+                                test test test test test test</p>
+                        </div>
+                        <ul class="quote-boxed__meta">
+                            <li>
+                                <div class="unit unit-horizontal unit-middle">
+                                    <div class="unit__left"><img class="quote-boxed__avatar"
+                                                                 src="bootstrap-fa/images/user-1-46x46.jpg" alt=""
+                                                                 width="46" height="46"/>
+                                    </div>
+                                    <div class="unit__body">
+                                        <cite class="quote-boxed__cite" th:text="${topic.publish}">Publish Test</cite>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="quote-boxed__time" th:text="${topic.topicTime}">Jul 20, 2019 time test</time>
+                            </li>
+                        </ul>
                     </article>
+                </div>
+
             </div>
-
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- Page Footer -->
-      <footer class="footer-centered section bg-gray-darker">
+    <!-- Page Footer -->
+    <footer class="footer-centered section bg-gray-darker">
         <div class="shell">
-          <div class="range range-sm-center">
-            <div class="cell-sm-10 cell-md-8 cell-lg-6">
-              <!-- brand Logo-->
-              <a class="brand" th:href="@{/page.do?operate=page&page=index}">
-                <div class="brand__name"><img src="images/logo.png" alt="" width="210" height="75"/>
-                </div><span class="brand__slogan">李金章，宼航航，Ren</span></a>
-              <ul class="list-icons list-inline-sm">
-                <li><a class="icon icon-sm fa fa-instagram icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-                <li><a class="icon icon-sm fa fa-pinterest icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a></li>
-              </ul>
-              <!-- Rights-->
-              <p class="rights"><a href="https://bjwlxy.cn/"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span></a><span class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline" href="#">Privacy Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+            <div class="range range-sm-center">
+                <div class="cell-sm-10 cell-md-8 cell-lg-6">
+                    <!-- brand Logo-->
+                    <a class="brand" th:href="@{/page.do?operate=page&page=index}">
+                        <div class="brand__name"><img src="images/logo.png" alt="" width="210" height="75"/>
+                        </div>
+                        <span class="brand__slogan">李金章，宼航航，Ren</span></a>
+                    <ul class="list-icons list-inline-sm">
+                        <li><a class="icon icon-sm fa fa-instagram icon-style-camera"
+                               href="#"><span></span><span></span><span></span><span></span></a></li>
+                        <li><a class="icon icon-sm fa fa-facebook icon-style-camera" href="#"><span></span><span></span><span></span><span></span></a>
+                        </li>
+                        <li><a class="icon icon-sm fa fa-pinterest icon-style-camera"
+                               href="#"><span></span><span></span><span></span><span></span></a></li>
+                    </ul>
+                    <!-- Rights-->
+                    <p class="rights"><a
+                            href="https://bjwlxy.cn/"><span>BJU StuWeb</span><span>&nbsp;&copy;&nbsp; </span></a><span
+                            class="copyright-year"></span>.&nbsp; <br class="veil-xs"><a class="link-underline"
+                                                                                         href="#">Privacy
+                        Policy</a><span> Design&nbsp;by&nbsp;<a href="https://github.com/machsh64">Ren</a></span></p>
+                </div>
             </div>
-          </div>
         </div>
-      </footer>
-    </div>
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="bootstrap-fa/js/core.min.js"></script>
-    <script src="bootstrap-fa/js/script.js"></script>
-  </body>
+    </footer>
+</div>
+<!-- Global Mailform Output-->
+<div class="snackbars" id="form-output-global"></div>
+<!-- Javascript-->
+<script src="bootstrap-fa/js/core.min.js"></script>
+<script src="bootstrap-fa/js/script.js"></script>
+
+<script src="js/topicHt.js"></script>
+</body>
 </html>

@@ -23,13 +23,16 @@ public class UserController {
 
     /* 利用loginNum进行用户/管理员判断 0为用户 1为管理员 */
     public String login(Integer loginNum,String loginId, String password, HttpSession session){
+
         if (loginNum == 0){
             Author author = userBasicService.login(loginId, password);
             if (author != null){
                 List<Topic> authorTopicList = topicService.getTopicListByAuthorId(author.getId());
                 author.setTopicList(authorTopicList);
                 session.setAttribute("author",author);
-                return "topicHt";
+                return "authorWadmin";
+            }else {
+                return "login";
             }
         }else if (loginNum == 1){
             Admin admin = adminBasicService.login(loginId, password);
@@ -37,7 +40,9 @@ public class UserController {
                 List<Topic> allTopic = topicService.getAllTopic();
                 admin.setTopicList(allTopic);
                 session.setAttribute("admin",admin);
-                return "topicHt";
+                return "authorWadmin";
+            }else {
+                return "login";
             }
         }
         throw new RuntimeException("UserController出现问题");

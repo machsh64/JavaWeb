@@ -79,13 +79,13 @@
               </div>
               <!-- headline 分页导航-->
               <ul class="rd-navbar-nav">
-                <li class="active"><a th:href="@{/page.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
+                <li class="active"><a th:href="@{/topic.do?operate=page&page=index}">主  页<span></span><span></span><span></span><span></span></a>
                 </li>
                 <li><a th:href="@{/topic.do?operate=page&page=topicHt}">专  题<span></span><span></span><span></span><span></span></a>
                 </li>
                 <!-- 此处th:if 进行是否已经登录判断 进行投稿按钮的可按性 a.innerText设置为空即可取消此页面显示-->
                 <!--th:if="${session.loginId}!="-->
-                <li><a th:href="@{/topic.do(operate='page',page='authorWadmin',loginNum=${session.logNum})}">专题投稿<span></span><span></span><span></span><span></span></a></li>
+                <li><a th:href="@{/topic.do(operate='JumpCrash')}">专题投稿<span></span><span></span><span></span><span></span></a></li>
                 <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a>
                 </li>
               </ul>
@@ -219,149 +219,30 @@
       <div class="range range-30">
 
         <!-- 从左渐入-->
-        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall">
+        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s" th:each="topic : ${session.indexTopic}">
           <!-- Post boxed-->
           <article class="post-boxed">
             <ul class="post-boxed__meta">
               <li>
-                <time datetime="2019">Jul 20, 2019 time test</time>
+                <time datetime="2019" th:text="${topic.topicTime}">Jul 5, 2019 time test</time>
               </li>
             </ul>
             <div class="post-boxed__main">
-              <h3 class="post-boxed__title"><a href="#">测试测试测试测试测试测试</a></h3>
-              <p>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+              <h3 class="post-boxed__title"><a th:href="@{/topic.do(operate='topicDetail',topicId=${topic.id})}" th:text="${topic.title}">Title Test Test Test</a></h3>
+              <p th:text="${topic.headLine}">headLine Test Test Test Test Test Test Test Test Test Test Test</p>
             </div>
             <div class="post-boxed__aside">
               <div class="unit unit-horizontal unit-middle unit-spacing-xs">
                 <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
                 </div>
                 <div class="unit__body">
-                  <h6 class="text-uppercase">by Ren</h6>
+                  <h6 class="text-uppercase" th:text="${topic.publish}">by Ren</h6>
                 </div>
               </div>
             </div>
           </article>
         </div>
 
-        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".15s">
-          <!-- Post boxed-->
-          <article class="post-boxed">
-            <ul class="post-boxed__meta">
-              <li>
-                <time datetime="2019">Jul 15, 2019 time test</time>
-              </li>
-            </ul>
-            <div class="post-boxed__main">
-              <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
-              <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
-            </div>
-            <div class="post-boxed__aside">
-              <div class="unit unit-horizontal unit-middle unit-spacing-xs">
-                <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
-                </div>
-                <div class="unit__body">
-                  <h6 class="text-uppercase">by Ren</h6>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
-          <!-- Post boxed-->
-          <article class="post-boxed">
-            <ul class="post-boxed__meta">
-              <li>
-                <time datetime="2019">Jul 5, 2019 time test</time>
-              </li>
-            </ul>
-            <div class="post-boxed__main">
-              <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
-              <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
-            </div>
-            <div class="post-boxed__aside">
-              <div class="unit unit-horizontal unit-middle unit-spacing-xs">
-                <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
-                </div>
-                <div class="unit__body">
-                  <h6 class="text-uppercase">by Ren</h6>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
-          <!-- Post boxed-->
-          <article class="post-boxed">
-            <ul class="post-boxed__meta">
-              <li>
-                <time datetime="2019">Jul 5, 2019 time test</time>
-              </li>
-            </ul>
-            <div class="post-boxed__main">
-              <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
-              <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
-            </div>
-            <div class="post-boxed__aside">
-              <div class="unit unit-horizontal unit-middle unit-spacing-xs">
-                <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
-                </div>
-                <div class="unit__body">
-                  <h6 class="text-uppercase">by Ren</h6>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
-          <!-- Post boxed-->
-          <article class="post-boxed">
-            <ul class="post-boxed__meta">
-              <li>
-                <time datetime="2019">Jul 5, 2019 time test</time>
-              </li>
-            </ul>
-            <div class="post-boxed__main">
-              <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
-              <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
-            </div>
-            <div class="post-boxed__aside">
-              <div class="unit unit-horizontal unit-middle unit-spacing-xs">
-                <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
-                </div>
-                <div class="unit__body">
-                  <h6 class="text-uppercase">by Ren</h6>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="cell-xs-6 cell-sm-6 cell-md-4 wow fadeInLeftSmall" data-wow-delay=".3s">
-          <!-- Post boxed-->
-          <article class="post-boxed">
-            <ul class="post-boxed__meta">
-              <li>
-                <time datetime="2019">Jul 5, 2019 time test</time>
-              </li>
-            </ul>
-            <div class="post-boxed__main">
-              <h3 class="post-boxed__title"><a href="#">Title Test Test Test</a></h3>
-              <p>headLine Test Test Test Test Test Test Test Test Test Test Test</p>
-            </div>
-            <div class="post-boxed__aside">
-              <div class="unit unit-horizontal unit-middle unit-spacing-xs">
-                <div class="unit__left"><img class="post-boxed__avatar" src="bootstrap-fa/images/user-6-46x46.jpg" alt="" width="46" height="46"/>
-                </div>
-                <div class="unit__body">
-                  <h6 class="text-uppercase">by Ren</h6>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
       </div>
     </div>
   </section>
