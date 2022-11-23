@@ -19,7 +19,14 @@ public class TopicDAOImpl extends BaseDAO<Topic> implements TopicDAO {
         String sql = "SELECT id,title,headLine,content,topicDateTime,publish,author authorId " +
                 "FROM w_topic " +
                 "WHERE author=?";
-        return executeQueryList(sql,authorId);
+        return executeQueryList(sql, authorId);
+    }
+
+    @Override
+    public int delAuthorTopicList(int authorId) {
+        String sql = "DELETE FROM w_topic " +
+                "WHERE author=?";
+        return executeUpdate(sql,authorId);
     }
 
     @Override
@@ -28,19 +35,28 @@ public class TopicDAOImpl extends BaseDAO<Topic> implements TopicDAO {
                 "FROM w_topic";
         return executeQueryList(sql);
     }
+
     @Override
     public Topic getTopicById(int topicId) {
         String sql = "SELECT id,title,headLine,content,topicDateTime,publish,author authorId " +
                 "FROM w_topic " +
                 "WHERE id=?";
-        return executeQuery(sql,topicId);
+        return executeQuery(sql, topicId);
     }
 
     @Override
     public int delTopicById(int topicId) {
         String sql = "DELETE FROM w_topic " +
                 "WHERE id=?";
-        return executeUpdate(sql,topicId);
+        return executeUpdate(sql, topicId);
+    }
+
+    @Override
+    public int updateTopic(Topic topic) {
+        String sql = "UPDATE w_topic " +
+                "SET title=?,headLine=?,content=?,topicDateTime=?,publish=? " +
+                "WHERE id=?";
+        return executeUpdate(sql, topic.getTitle(), topic.getHeadLine(), topic.getContent(), topic.getTopicDateTime(), topic.getPublish(), topic.getId());
     }
 
 
@@ -48,6 +64,6 @@ public class TopicDAOImpl extends BaseDAO<Topic> implements TopicDAO {
     public int addTopic(Topic topic) {
         String sql = "INSERT INTO w_topic(title,headLine,content,topicDateTime,publish,author) " +
                 "VALUES(?,?,?,?,?,?)";
-        return executeUpdate(sql,topic.getTitle(),topic.getHeadLine(),topic.getContent(),topic.getTopicDateTime(),topic.getPublish(),topic.getAuthorId());
+        return executeUpdate(sql, topic.getTitle(), topic.getHeadLine(), topic.getContent(), topic.getTopicDateTime(), topic.getPublish(), topic.getAuthorId());
     }
 }

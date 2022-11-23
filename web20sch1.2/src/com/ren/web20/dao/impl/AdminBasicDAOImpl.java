@@ -18,4 +18,11 @@ public class AdminBasicDAOImpl extends BaseDAO<Admin> implements AdminBasicDAO {
                 "WHERE loginId=? AND password=?";
         return executeQuery(sql,loginId,password);
     }
+
+    @Override
+    public int delAuthorById(int authorId){
+        String sql = "DELETE FROM w_author " +
+                "WHERE id=?";
+        return executeUpdate(sql,authorId);
+    }
 }

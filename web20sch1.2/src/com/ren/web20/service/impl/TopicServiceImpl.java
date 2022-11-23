@@ -19,13 +19,19 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public Topic getTopicById(int topicId){
-        return topicDAO.getTopicById(topicId);
+        Topic topic = topicDAO.getTopicById(topicId);
+        return TopicUtil.getTopicTimeWPo(topic);
     }
 
     @Override
     public List<Topic> getTopicListByAuthorId(int authorId) {
         List<Topic> topicList = topicDAO.getTopicList(authorId);
         return TopicUtil.getTopicTimeWCount(topicList);
+    }
+
+    @Override
+    public int delAuthorTopicListById(int authorId) {
+        return topicDAO.delAuthorTopicList(authorId);
     }
 
     @Override
@@ -37,6 +43,11 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public int addTopic(Topic topic){
         return topicDAO.addTopic(topic);
+    }
+
+    @Override
+    public int updateTopic(Topic topic) {
+        return topicDAO.updateTopic(topic);
     }
 
     @Override

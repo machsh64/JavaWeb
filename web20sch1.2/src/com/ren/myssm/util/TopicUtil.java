@@ -2,8 +2,12 @@ package com.ren.myssm.util;
 
 import com.ren.web20.pojo.Topic;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,15 +21,37 @@ public class TopicUtil {
     public static List<Topic> getTopicTimeWCount(List<Topic> topicList){
         int i=0;
         for (Topic topic : topicList) {
-            DateTimeFormatter dtfYear = DateTimeFormatter.ofPattern("yyyy");
-            DateTimeFormatter dtfMonth = DateTimeFormatter.ofPattern("MM");
-            DateTimeFormatter dtfDay = DateTimeFormatter.ofPattern("dd");
+            SimpleDateFormat yearSdf = new SimpleDateFormat("yyyy");
+            SimpleDateFormat monthSdf = new SimpleDateFormat("MM");
+            SimpleDateFormat daySdf = new SimpleDateFormat("dd");
 
-            LocalDateTime topicDateTime = topic.getTopicDateTime();
-            String topicDate = dtfMonth.format(topicDateTime)+"月"+dtfDay.format(topicDateTime)+"日   " + dtfYear.format(topicDateTime);
+
+            Date topicDateTime = topic.getTopicDateTime();
+            String year = yearSdf.format(topicDateTime);
+            String month = monthSdf.format(topicDateTime);
+            String day = daySdf.format(topicDateTime);
+
+            String topicDate = month +"月"+day + "日   " + year;
             topic.setTopicTime(topicDate);
             topic.setCount(i++);
         }
         return topicList;
+    }
+    public static Topic getTopicTimeWPo(Topic topic){
+
+        SimpleDateFormat yearSdf = new SimpleDateFormat("yyyy");
+        SimpleDateFormat monthSdf = new SimpleDateFormat("MM");
+        SimpleDateFormat daySdf = new SimpleDateFormat("dd");
+
+
+        Date topicDateTime = topic.getTopicDateTime();
+        String year = yearSdf.format(topicDateTime);
+        String month = monthSdf.format(topicDateTime);
+        String day = daySdf.format(topicDateTime);
+
+        String topicDate = month +"月"+day + "日   " + year;
+        topic.setTopicTime(topicDate);
+
+        return topic;
     }
 }

@@ -66,18 +66,23 @@
                         </div>
                         <!-- headline a组件-->
                         <div class="rd-navbar-nav-wrap">
+
                             <div class="rd-navbar-element">
                                 <!-- 登录下拉 button-->
                                 <ul class="list-icons list-inline-sm">
                                     <div class="btn-group " role="group">
-                                        <button type="button" th:if="${session.author}==null"
+                                        <button type="button" th:if="${session.author==null&(session.admin==null)}"
                                                 class="button button-block button-primary-outline button-ujarak"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             登 录
                                             <span class="caret"></span>
                                         </button>
                                         <input type="button" th:value="${session.author.nickName}"
-                                               th:unless="${session.author}==null"
+                                               th:if="${session.author}!=null"
+                                               class="button button-block button-primary-outline button-ujarak"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                                        <input type="button" th:value="${session.admin.nickName}"
+                                               th:if="${session.admin}!=null"
                                                class="button button-block button-primary-outline button-ujarak"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                                         <ul class="dropdown-menu">
@@ -94,17 +99,14 @@
                                     </div>
                                 </ul>
                             </div>
+
                             <!-- headline 分页导航-->
                             <ul class="rd-navbar-nav">
-                                <li><a th:href="@{/topic.do?operate=page&page=index}">主
-                                    页<span></span><span></span><span></span><span></span></a></li>
-                                <li><a th:href="@{/topic.do?operate=page&page=topicHt}">专
-                                    题<span></span><span></span><span></span><span></span></a></li>
-                                <li class="active"><a
-                                        th:href="@{/topic.do(operate='JumpCrash')}">专题投稿<span></span><span></span><span></span><span></span></a>
+                                <li><a th:href="@{/topic.do?operate=page&page=index}">主 页<span></span><span></span><span></span><span></span></a></li>
+                                <li><a th:href="@{/topic.do?operate=page&page=topicHt}">专 题<span></span><span></span><span></span><span></span></a></li>
+                                <li class="active"><a th:href="@{/topic.do(operate='JumpCrash')}">专题投稿<span></span><span></span><span></span><span></span></a>
                                 </li>
-                                <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact
-                                    Us<span></span><span></span><span></span><span></span></a></li>
+                                <li><a th:href="@{/page.do?operate=page&page=contact-us}">Contact Us<span></span><span></span><span></span><span></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -117,7 +119,7 @@
     <section class="breadcrumbs-custom bg-image"
              style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
         <div class="shell">
-            <h1 class="breadcrumbs-custom__title" th:if="${session.author==null}" th:text="登录以进行访问">Contact 1Us</h1>
+            <h1 class="breadcrumbs-custom__title" th:if="${session.author==null&(session.admin==null)}" th:text="登录以进行访问">Wel TEST</h1>
             <h1 class="active" th:if="${session.author!=null and (session.logNum==0)}"
                 th:text="|欢迎您,用户${session.author.nickName} !|">null1</h1>
             <h1 class="active" th:if="${session.admin!=null and (session.logNum==1)}"
@@ -171,11 +173,11 @@
                                         <label class="form-label" for="contact-publish">文章出处（10字内）</label>
                                     </div>
                                     <!--后端获取时间转换异常 此处为了优先注入文章 无视处理-->
-                                    <input name="localDateTime" type="hidden" value="2019-12-33 03:22:12">
-                                    <!--<div class="form-wrap">
-                                        <input class="form-input" id="contact-date" type="text" data-time-picker="datetime-local" name="localDateTime" data-constraints="@Required">
+                                    <!--<input name="localDateTime" type="hidden" value="2019-12-33 03:22:12">-->
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-date" type="text" data-time-picker="date" name="localDateTime" data-constraints="@Required">
                                         <label class="form-label" for="contact-date">日期</label>
-                                    </div>-->
+                                    </div>
                                     <div class="form-wrap form-button offset-1">
                                         <button class="button button-block button-primary-outline button-ujarak"
                                                 type="submit" onclick="crash()" th:if="${session.author}!=null">提交稿件
@@ -187,10 +189,6 @@
                                 </form>
                             </div>
                         </div>
-
-                        <!--管理员控制用户-->
-
-
                         <!--right 面板-->
                         <div class="layout-columns__aside">
                             <div class="layout-columns__aside-item">
@@ -242,12 +240,29 @@
                             </div>
                         </div>
 
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!--管理员控制用户-->
+    <table th:if="${session.admin!=null}" class="table table-hover">
+        <tr>
+            <th>用户名</th>
+            <th>账号</th>
+            <th>密码</th>
+            <th>稿件数</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="auhtor : ${session.admin.authorList}">
+            <td th:text="${auhtor.nickName}"></td>
+            <td th:text="${auhtor.loginId}"></td>
+            <td th:text="${auhtor.password}"></td>
+            <td th:text="${auhtor.topicList.size()}"></td>
+            <td><button type="button" th:onclick="|delAuthor(${auhtor.id})|">删除</button></td>
+        </tr>
+    </table>
 
     <!-- 特定用户id下所有稿件 -->
     <section th:if="${session.author}!=null" class="section section-md bg-gray-darker text-center">
@@ -259,7 +274,9 @@
                     <!-- Quote boxed-->
                     <article class="quote-boxed"><span></span><span></span><span></span><span></span>
                         <div class="quote-boxed__title">
-                            <p class="quote-boxed__title" th:text="${topic.title}" style="float: left">title test test test</p>
+                            <a class="quote-boxed__title" th:href="@{/topic.do(operate='setTopicD',topicId=${topic.id})}"
+                               data-toggle="tooltip" data-placement="right" title="点击进入编辑"
+                               th:text="${topic.title}" style="float: left">title test test test</a>
                             <button class="quote-boxed__title btn btn-danger btn-xs" th:onclick="|delTopic(${topic.id})|" type="button" style="float: right">删除</button>
                         </div>
                         <br/>

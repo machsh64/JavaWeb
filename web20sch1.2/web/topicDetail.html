@@ -63,11 +63,20 @@
                                 <!-- 登录下拉 button-->
                                 <ul class="list-icons list-inline-sm">
                                     <div class="btn-group " role="group">
-                                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button type="button" th:if="${session.author==null&(session.admin==null)}"
+                                                class="button button-block button-primary-outline button-ujarak"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             登 录
                                             <span class="caret"></span>
                                         </button>
-                                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                                        <input type="button" th:value="${session.author.nickName}"
+                                               th:if="${session.author}!=null"
+                                               class="button button-block button-primary-outline button-ujarak"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                                        <input type="button" th:value="${session.admin.nickName}"
+                                               th:if="${session.admin}!=null"
+                                               class="button button-block button-primary-outline button-ujarak"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                                         <ul class="dropdown-menu">
                                             <ul class="rd-navbar-nav">
                                                 <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>
@@ -101,14 +110,14 @@
         <div class="shell">
             <div class="range range-md-center">
                 <div class="cell-md-11 cell-lg-10">
-                    <h2 class="text-bold" th:text="${session.topicDetail.title}">title test</h2>
+                    <h1 class="text-bold" th:text="${session.topicDetail.title}">title test</h1>
                     <br/>
-                    <h4 class="text-bold" th:text="${session.topicDetail.publish}">publish test</h4>
+                    <h2 class="text-bold" th:text="${session.topicDetail.publish}">publish test</h2>
                     <br/>
-                    <p><span class="box-width-6" th:text="${session.topicDetail.headLine}">headLine test test test test test test test test test test test test test test test test test test test test test test test test test </span></p>
+                    <p><span class="box-width-6" style="font-size: 15pt" th:text="${session.topicDetail.headLine}">headLine test test test test test test test test test test test test test test test test test test test test test test test test test </span></p>
                     <br/>
                     <br/>
-                    <p><span class="box-width-12" th:text="${session.topicDetail.content}">content test test test test test test test test test test test test test test test test test test test test test test test test test </span></p>
+                    <p><span class="box-width-12" style="font-size: 15pt" th:text="${session.topicDetail.content}">content test test test test test test test test test test test test test test test test test test test test test test test test test </span></p>
                 </div>
             </div>
         </div>

@@ -26,11 +26,15 @@ public class AdminBasicServiceImpl implements AdminBasicService {
     public Admin login(String loginId, String password) {
         Admin admin = adminBasicDAO.ADMINLogin(loginId, password);
         if (admin != null) {
-            List<Topic> allTopic = topicService.getAllTopic();
             List<Author> allUser = userBasicService.getAllUser();
-            admin.setTopicList(allTopic);
             admin.setAuthorList(allUser);
         }
         return admin;
+    }
+
+    @Override
+    public int delAuthorById(int authorId){
+        topicService.delAuthorTopicListById(authorId);
+        return adminBasicDAO.delAuthorById(authorId);
     }
 }

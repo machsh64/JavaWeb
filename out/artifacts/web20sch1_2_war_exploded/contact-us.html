@@ -63,11 +63,20 @@
                     <!-- 登录下拉 button-->
                     <ul class="list-icons list-inline-sm">
                       <div class="btn-group " role="group">
-                        <button type="button" th:if="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" th:if="${session.author==null&(session.admin==null)}"
+                                class="button button-block button-primary-outline button-ujarak"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           登 录
                           <span class="caret"></span>
                         </button>
-                        <input type="button" th:value="${session.author.nickName}" th:unless="${session.author}==null" class="button button-block button-primary-outline button-ujarak" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                        <input type="button" th:value="${session.author.nickName}"
+                               th:if="${session.author}!=null"
+                               class="button button-block button-primary-outline button-ujarak"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                        <input type="button" th:value="${session.admin.nickName}"
+                               th:if="${session.admin}!=null"
+                               class="button button-block button-primary-outline button-ujarak"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                         <ul class="dropdown-menu">
                           <ul class="rd-navbar-nav">
                             <li><a th:href="@{page.do?operate=login&logNum=0&enroll=0}">用户登录<span></span><span></span><span></span><span></span></a></li><br/>

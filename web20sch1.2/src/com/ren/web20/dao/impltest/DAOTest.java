@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,13 +36,22 @@ public class DAOTest {
 
     @Test
     public void test() {
-        LocalDateTime localDateTime = LocalDateTime.of(2001,12,11,3,22,13);
+       /* LocalDateTime localDateTime = LocalDateTime.of(2001,12,11,3,22,13);
         Topic topic = new Topic("丽丽妈妈", "丽丽妈妈是丽丽的妈妈", "丽丽只有丽丽妈妈一个妈妈，丽丽妈妈只是丽丽一个人的妈妈", localDateTime, "new York", 1);
         topicDAO.addTopic(topic);
 
         List<Topic> topicList = topicDAO.getTopicList(1);
         topicList.forEach(System.out::println);
-
+*/
+/*
+        Date localDateTime = LocalDateTime.of(2001,12,11,3,22,13);
+*/
+/*
+        Topic topic = new Topic("test", "test", "test", localDateTime, "test", 2);
+*/
+/*
+        topicDAO.updateTopic(topic);
+*/
 
         /*System.out.println("*************************");
 

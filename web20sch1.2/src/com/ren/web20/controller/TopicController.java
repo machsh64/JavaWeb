@@ -1,6 +1,5 @@
 package com.ren.web20.controller;
 
-import com.ren.myssm.util.StringUtil;
 import com.ren.web20.pojo.Admin;
 import com.ren.web20.pojo.Author;
 import com.ren.web20.pojo.Topic;
@@ -9,6 +8,7 @@ import com.ren.web20.service.UserBasicService;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +20,7 @@ import java.util.List;
  **/
 public class TopicController {
     private TopicService topicService;
+    private UserBasicService userBasicService;
 
     public String page(String page, HttpSession session) {
         List<Topic> allTopic = topicService.getAllTopic();
@@ -40,7 +41,7 @@ public class TopicController {
         return page;
     }
 
-    public String putTopic(String title, String headLine, String content, LocalDateTime localDateTime,String publish,Integer authorId) {
+    public String putTopic(String title, String headLine, String content, Date localDateTime,String publish,Integer authorId) {
         Topic topic = new Topic(title, headLine, content, localDateTime, publish, authorId);
         topicService.addTopic(topic);
         return "redirect:topic.do?operate=JumpCrash";
@@ -62,6 +63,8 @@ public class TopicController {
         }else if (loginNum == 1){
             Admin admin = (Admin) session.getAttribute("admin");
             if (admin != null){
+                List<Author> allUser = userBasicService.getAllUser();
+                admin.setAuthorList(allUser);
                 List<Topic> allTopic = topicService.getAllTopic();
                 admin.setTopicList(allTopic);
                 session.setAttribute("admin",admin);
@@ -82,5 +85,25 @@ public class TopicController {
         Topic topic = topicService.getTopicById(topicId);
         session.setAttribute("topicDetail",topic);
         return "topicDetail";
+    }
+
+    public String setTopicD(Integer topicId,HttpSession session){
+        Topic topic = topicService.getTopicById(topicId);
+        session.setAttribute("topicDetail",topic);
+        return "setTopic";
+    }
+
+    public String updateTopic(String title, String headLine, String content, Date localDateTime, String publish, Integer topicId, HttpSession session){
+        Topic topic = new Topic(topicId,title, headLine, content, localDateTime, publish, topicId);
+        topicService.updateTopic(topic);
+
+        Author author = (Author) session.getAttribute("author");
+        if (author != null){
+            List<Topic> authorTopicList = topicService.getTopicListByAuthorId(author.getId());
+            author.setTopicList(authorTopicList);
+            session.setAttribute("author",author);
+            return "redirect:topic.do?operate=JumpCrash";
+        }
+        throw new RuntimeException("TopicController: updateTopic_maybe exception");
     }
 }

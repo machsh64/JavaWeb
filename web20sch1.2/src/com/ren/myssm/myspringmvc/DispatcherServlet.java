@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -90,11 +91,11 @@ public class DispatcherServlet extends ViewBaseServlet{
                                 if ("java.lang.Integer".equals(typeName)) {
                                     parameterObj = Integer.parseInt(parameterValue);
                                 }
-                                if ("java.time.LocalDateTime".equals(typeName)){
-                                    String date = (String) parameterObj;
-                                    System.out.println(date);
-/*                                  parameterObj = LocalDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneOffset.of("+8"));*/
-                                    parameterObj = LocalDateTime.of(2019,1,2,3,4,5);
+                                if ("java.util.Date".equals(typeName)){
+                                    String dateStr = (String) parameterObj;
+                                    System.out.println(dateStr);
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                    parameterObj = sdf.parse(dateStr);
                                 }
                             }
 

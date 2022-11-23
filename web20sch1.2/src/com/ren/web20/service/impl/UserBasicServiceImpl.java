@@ -1,5 +1,6 @@
 package com.ren.web20.service.impl;
 
+import com.ren.myssm.util.TopicUtil;
 import com.ren.web20.dao.UserBasicDAO;
 import com.ren.web20.pojo.Author;
 import com.ren.web20.pojo.Topic;
@@ -34,6 +35,7 @@ public class UserBasicServiceImpl implements UserBasicService {
         return author;
     }
 
+/*模糊查找用户，功能简单但用户数量少，停止*/
     @Override
     public Author finder(Author author) {
         return null;
@@ -41,7 +43,13 @@ public class UserBasicServiceImpl implements UserBasicService {
 
     @Override
     public List<Author> getAllUser() {
-        return userBasicDAO.getAllUser();
+        List<Author> authorList = userBasicDAO.getAllUser();
+        for (Author author :authorList) {
+            List<Topic> topicList = topicService.getTopicListByAuthorId(author.getId());
+            List<Topic> topicList1 = TopicUtil.getTopicTimeWCount(topicList);
+            author.setTopicList(topicList1);
+        }
+        return authorList;
     }
 
     @Override

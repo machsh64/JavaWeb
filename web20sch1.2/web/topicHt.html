@@ -70,14 +70,18 @@
                                 <!-- 登录下拉 button-->
                                 <ul class="list-icons list-inline-sm">
                                     <div class="btn-group " role="group">
-                                        <button type="button" th:if="${session.author}==null"
+                                        <button type="button" th:if="${session.author==null&(session.admin==null)}"
                                                 class="button button-block button-primary-outline button-ujarak"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             登 录
                                             <span class="caret"></span>
                                         </button>
                                         <input type="button" th:value="${session.author.nickName}"
-                                               th:unless="${session.author}==null"
+                                               th:if="${session.author}!=null"
+                                               class="button button-block button-primary-outline button-ujarak"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                                        <input type="button" th:value="${session.admin.nickName}"
+                                               th:if="${session.admin}!=null"
                                                class="button button-block button-primary-outline button-ujarak"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                                         <ul class="dropdown-menu">
@@ -140,7 +144,9 @@
                      th:each="topic : ${session.topicList}">
                     <!-- Quote boxed-->
                     <article class="quote-boxed"><span></span><span></span><span></span><span></span>
-                        <p class="quote-boxed__title" th:text="${topic.title}">title test test test</p>
+                        <a class="quote-boxed__title" th:href="@{/topic.do(operate='topicDetail',topicId=${topic.id})}"
+                           data-toggle="tooltip" data-placement="right" title="点击进入详情"
+                           th:text="${topic.title}">title test test test</a>
                         <div class="quote-boxed__text">
                             <p class="tp_headLine" th:text="${topic.headLine}" th:onmouseover="|tpMouseOn(${topic.count+1})|" style="color: #3a3a3a">headLine test test test test test test test test test test
                                 test test test test test test</p>

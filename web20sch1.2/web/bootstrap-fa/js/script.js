@@ -971,7 +971,7 @@
 
 				options[ 'format' ] = 'dddd DD MMMM YYYY - HH:mm';
 				if ( $dateTimePicker.attr( "data-time-picker" ) == "date" ) {
-					options[ 'format' ] = 'dddd DD MMMM YYYY';
+					options[ 'format' ] = 'YYYY-MM-DD';
 					options[ 'minDate' ] = new Date();
 				} else if ( $dateTimePicker.attr( "data-time-picker" ) == "time" ) {
 					options[ 'format' ] = 'HH:mm';
