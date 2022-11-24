@@ -55,7 +55,6 @@ public class TopicController {
             if (author != null){
                 List<Topic> authorTopicList = topicService.getTopicListByAuthorId(author.getId());
                 author.setTopicList(authorTopicList);
-                session.setAttribute("author",author);
                 return "authorWadmin";
             }else {
                 return "authorWadmin";
@@ -65,9 +64,6 @@ public class TopicController {
             if (admin != null){
                 List<Author> allUser = userBasicService.getAllUser();
                 admin.setAuthorList(allUser);
-                List<Topic> allTopic = topicService.getAllTopic();
-                admin.setTopicList(allTopic);
-                session.setAttribute("admin",admin);
                 return "authorWadmin";
             }else {
                 return "authorWadmin";
@@ -101,7 +97,12 @@ public class TopicController {
         if (author != null){
             List<Topic> authorTopicList = topicService.getTopicListByAuthorId(author.getId());
             author.setTopicList(authorTopicList);
-            session.setAttribute("author",author);
+            return "redirect:topic.do?operate=JumpCrash";
+        }
+        Admin admin = (Admin) session.getAttribute("admin");
+        if (admin!=null){
+            List<Author> allUser = userBasicService.getAllUser();
+            admin.setAuthorList(allUser);
             return "redirect:topic.do?operate=JumpCrash";
         }
         throw new RuntimeException("TopicController: updateTopic_maybe exception");

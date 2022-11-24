@@ -117,7 +117,7 @@
 
     <!-- Breadcrumbs-->
     <section class="breadcrumbs-custom bg-image"
-             style="background-image: url(bootstrap-fa/images/breadcrumbs-image.jpg);">
+             style="background-image: url(images/headBc.jpg);">
         <div class="shell">
             <h1 class="breadcrumbs-custom__title" th:if="${session.author==null&(session.admin==null)}" th:text="登录以进行访问">Wel TEST</h1>
             <h1 class="active" th:if="${session.author!=null and (session.logNum==0)}"
@@ -146,6 +146,9 @@
                         <!--投稿-->
                         <div class="layout-columns__main">
                             <div class="layout-columns__main-inner">
+
+                                <img th:if="${session.author==null}" src="images/topicwA.jpg" alt="..." class="img-thumbnail">
+
                                 <!-- RD Mailform-->
                                 <form class="rd-mailform" method="post" th:if="${session.author}!=null"
                                       th:action="@{/topic.do(operate='putTopic',authorId=${session.author.id})}">
@@ -246,6 +249,46 @@
         </div>
     </section>
 
+    <!-- 特定用户id下所有稿件 -->
+    <section th:if="${session.author}!=null" class="section section-md bg-gray-darker text-center">
+        <div class="shell">
+            <h1>这儿， 是你的地盘！</h1>
+            <div class="range range-50 range-sm-center">
+
+                <div class="cell-sm-9 cell-md-6 wow fadeInLeftSmall" data-wow-delay=".3s" th:each="topic : ${session.author.topicList}">
+                    <!-- Quote boxed-->
+                    <article class="quote-boxed"><span></span><span></span><span></span><span></span>
+                        <div class="quote-boxed__title">
+                            <a class="quote-boxed__title" th:href="@{/topic.do(operate='setTopicD',topicId=${topic.id})}"
+                               data-toggle="tooltip" data-placement="right" title="点击进入编辑"
+                               th:text="${topic.title}" style="float: left">title test test test</a>
+                            <button class="quote-boxed__title btn btn-danger btn-xs" th:onclick="|delTopic(${topic.id})|" type="button" style="float: right">删除</button>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="quote-boxed__text">
+                            <p class="tp_headLine" th:text="${topic.headLine}" style="color: #3a3a3a">headLine test test test test test test test test test test
+                                test test test test test test</p>
+                        </div>
+                        <ul class="quote-boxed__meta">
+                            <li>
+                                <div class="unit unit-horizontal unit-middle">
+                                    <div class="unit__body">
+                                        <cite class="quote-boxed__cite" th:text="${topic.publish}">Publish Test</cite>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="quote-boxed__time" th:text="${topic.topicTime}">Jul 20, 2019 time test</time>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!--管理员控制用户-->
     <table th:if="${session.admin!=null}" class="table table-hover">
         <tr>
@@ -264,19 +307,20 @@
         </tr>
     </table>
 
-    <!-- 特定用户id下所有稿件 -->
-    <section th:if="${session.author}!=null" class="section section-md bg-gray-darker text-center">
+    <!-- 所有用户id下所有稿件 -->
+    <section th:if="${session.admin}!=null" class="section section-md bg-gray-darker text-center">
         <div class="shell">
-            <h1>这儿， 是你的地盘！</h1>
-            <div class="range range-50 range-sm-center">
+            <h3>管理所有用户的稿件</h3>
+            <div class="range range-50 range-sm-center" th:each="author : ${session.admin.authorList}">
 
-                <div class="cell-sm-9 cell-md-6 wow fadeInLeftSmall" data-wow-delay=".3s" th:each="topic : ${session.author.topicList}">
+                <div class="cell-sm-9 cell-md-6 wow fadeInLeftSmall" data-wow-delay=".3s" th:each="topic : *{author.topicList}">
                     <!-- Quote boxed-->
                     <article class="quote-boxed"><span></span><span></span><span></span><span></span>
                         <div class="quote-boxed__title">
                             <a class="quote-boxed__title" th:href="@{/topic.do(operate='setTopicD',topicId=${topic.id})}"
                                data-toggle="tooltip" data-placement="right" title="点击进入编辑"
                                th:text="${topic.title}" style="float: left">title test test test</a>
+                            <p th:text="${topic.authorId}" style="float: left"></p>
                             <button class="quote-boxed__title btn btn-danger btn-xs" th:onclick="|delTopic(${topic.id})|" type="button" style="float: right">删除</button>
                         </div>
                         <br/>

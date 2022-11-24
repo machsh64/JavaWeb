@@ -113,18 +113,10 @@
 
                     <!-- left 面板-->
                     <!--投稿-->
-                            <form class="rd-mailform" method="post" th:if="${session.author}!=null"
+                            <form class="rd-mailform" method="post"
                                   th:action="@{/topic.do(operate='updateTopic',topicId=${session.topicDetail.id})}"
                             th:object="${session.topicDetail}">
-                              <!--  <input type="text" name="title" th:value="*{title}"/>
-                                <input type="text" name="headLine" th:value="*{headLine}"/>
-                                <input type="text" name="content" th:value="*{content}"/>
-                                <input type="text" name="publish" th:value="*{publish}"/>
-                                <input name="localDateTime" type="hidden" value="2019-12-33">
 
-                                <button class="button button-block button-primary-outline button-ujarak"
-                                        type="submit" th:if="${session.author}!=null">提交稿件
-                                </button>-->
                                       <div class="form-wrap">
                                           <input class="form-input" id="contact-title" type="text"
                                                  name="title"
@@ -165,7 +157,7 @@
                                       </div>
                                       <div class="form-wrap form-button offset-1">
                                           <button class="button button-block button-primary-outline button-ujarak"
-                                                  type="submit" onclick="crash()" th:if="${session.author}!=null">提交稿件
+                                                  type="submit" onclick="crash()" >提交稿件
                                           </button>
                                       </div>
                             </form>
