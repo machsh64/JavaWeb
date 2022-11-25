@@ -86,7 +86,7 @@ Tomcat版本：8
 
 #### 1.3 配置tomcat 并启动 
 
-tomcat初始访问路径为 http://localhost:8080/web20sch1_2/topic.do?operate=page&page=index
+tomcat初始访问路径为 http://localhost:8080/(配置后生成的Applection Context路径)/topic.do?operate=page&page=index
 
 #### 1.4 默认初始账号
 
